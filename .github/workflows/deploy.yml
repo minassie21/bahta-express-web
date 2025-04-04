@@ -38,7 +38,7 @@ jobs:
           RewriteCond %{REQUEST_FILENAME} !-d
           RewriteRule . /index.html [L]" > dist/.htaccess
 
-      - name: Deploy to cPanel via FTP
+      - name: Deploy to cPanel via SFTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.CPANEL_HOST }}
@@ -46,3 +46,5 @@ jobs:
           password: ${{ secrets.CPANEL_PASSWORD }}
           local-dir: dist/
           server-dir: ${{ secrets.CPANEL_DEST }}
+          protocol: sftp
+          port: 21 # Standard SFTP port
