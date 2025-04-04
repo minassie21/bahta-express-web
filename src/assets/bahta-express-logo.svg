@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="100" viewBox="0 0 300 100">
+  <style>
+    .logo-text { font-family: Arial, sans-serif; font-weight: bold; }
+    .express-text { font-family: Arial, sans-serif; }
+    .orange { fill: #FF5722; }
+    .black { fill: #000000; }
+  </style>
+  <g>
+    <path class="orange" d="M30,50 C30,36.7 40.7,26 54,26 C67.3,26 78,36.7 78,50 C78,63.3 67.3,74 54,74 C40.7,74 30,63.3 30,50 Z" />
+    <rect class="orange" x="60" y="40" width="50" height="40" />
+    <path class="orange" d="M40,50 L54,65 L54,80 L20,80 L40,50 Z" />
+    <text x="120" y="50" class="logo-text black" font-size="36">Bahta</text>
+    <text x="120" y="80" class="express-text black" font-size="24">EXPRESS</text>
+  </g>
+</svg>
