@@ -1,5 +1,7 @@
 {
-  "name": "react-vite-tailwind",
+  "name": "Bahta Express Logistics Web App",
+  "description": "A web application for Bahta Express Logistics",
+  "homepage": "https://bahtaexpress.com/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
