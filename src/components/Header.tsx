@@ -64,6 +64,7 @@ export function Header() {
               variant="outline"
               size="sm"
               className="hidden sm:inline-flex rounded-full"
+              aria-label="Call us"
             >
               <Phone className="mr-2 h-4 w-4" />
               Call
@@ -71,7 +72,10 @@ export function Header() {
           </a>
 
           <Link to="/contact">
-            <Button className="group shadow-sm relative rounded-full border border-gray-200 bg-white text-sm p-2 font-semibold overflow-hidden">
+            <Button
+              aria-label="get a quote"
+              className="group shadow-sm relative rounded-full border border-gray-200 bg-white text-sm p-2 font-semibold overflow-hidden"
+            >
               <span className="absolute inset-0 w-full h-full bg-orange-500 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
               <span className="absolute left-2 top-1/2 transform -translate-y-1/2 w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center transition-transform duration-200 ease-in-out group-hover:translate-x-28">
                 <svg
@@ -98,6 +102,7 @@ export function Header() {
           {/* Mobile Menu Toggle */}
           <div className="md:hidden">
             <Button
+              aria-label="Toggle mobile menu"
               variant="outline"
               size="icon"
               className="h-9 w-9 rounded-full"
@@ -135,6 +140,7 @@ export function Header() {
                         className="h-8 w-auto"
                       />
                       <Button
+                        aria-label="Close mobile menu"
                         variant="ghost"
                         size="icon"
                         className="h-9 w-9 rounded-full hover:bg-gray-100"
@@ -160,6 +166,7 @@ export function Header() {
                     <div className="p-6 border-t mt-auto">
                       <a href="tel:+251911282956" className="mb-4 block">
                         <Button
+                          aria-label="Call us"
                           variant="outline"
                           size="sm"
                           className="w-full rounded-full mb-3"
@@ -169,7 +176,10 @@ export function Header() {
                         </Button>
                       </a>
                       <Link to="/contact" className="block">
-                        <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white rounded-full">
+                        <Button
+                          aria-label="Get a quote"
+                          className="w-full bg-orange-500 hover:bg-orange-600 text-white rounded-full"
+                        >
                           Get a Quote
                         </Button>
                       </Link>

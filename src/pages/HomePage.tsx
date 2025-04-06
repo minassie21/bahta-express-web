@@ -173,6 +173,7 @@ export default function HomePage() {
             >
               <a href="tel:+251911282956">
                 <Button
+                  aria-label="Call Bahta Express"
                   variant="outline"
                   size="lg"
                   className="rounded-full bg-white text-black hover:bg-orange-100"
@@ -183,6 +184,7 @@ export default function HomePage() {
               </a>
               <Link to="/contact">
                 <Button
+                  aria-label="Get a Quote"
                   size="lg"
                   className="rounded-full bg-orange-500 hover:bg-orange-600"
                 >

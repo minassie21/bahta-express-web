@@ -172,6 +172,7 @@ export default function ContactPage() {
               </div>
 
               <Button
+                aria-label="Send Message"
                 type="submit"
                 className="w-full bg-orange-600 hover:bg-orange-700"
               >
