@@ -36,6 +36,8 @@ import PostImageThree from "@/assets/posts/Foreign-freighters.jpg";
 import { c } from "node_modules/vite/dist/node/moduleRunnerTransport.d-CXw_Ws6P";
 
 import { blogs } from "@/constants/blogs";
+import { services, logisticsServices } from "@/constants/services";
+import { testimonials } from "@/constants/testimonials";
 
 import SEO from "@/components/SEO";
 import {
@@ -86,64 +88,6 @@ const partners = [
   },
   {
     name: "Partner 11",
-    logo: PartnerEleven,
-  },
-];
-
-const services = [
-  {
-    title: "Ocean Freight Solutions",
-    description:
-      "LCL,FCL Shipments via ESL,China to Ethiopia Ports.Break Bulk/Heavy Lift Experience,Compliant with Import and Export Regulation",
-    image: OceanFreignImage,
-  },
-  {
-    title: "Air Freight Cargo",
-    description:
-      "Competitive Air cargo Via Ethiopian,Saudi,Emirates Airlines from major Chinese cities to Addis Ababa. Guaranteed space,Rapid Transit.",
-    image: AirFreigImage,
-  },
-  {
-    title: "Customs and Regulatory compliance",
-    description:
-      "Expert China-Ethiopia export and import Customs documentation. Duty optimization strategies minimize delays and avoid penalities.",
-    image: CustomsImage,
-  },
-];
-
-const logisticsServices = [
-  {
-    title: "Warehouse Services",
-    description:
-      "Cargo Consolidation,storage,inventory management and cross-docking,ensuring efficient Ethiopia-bound Logistics with Flexible,scalable solutions for diverse shipment needs.",
-  },
-  {
-    title: "Pre-Shipment Verification of conformity (PVOC) ",
-    description:
-      "We expertly prepare PVOC Documentation required by Ethiopian Standards from Bureau Veritas and Contenca,ensuring compliance with Ethiopian standards and seamless customs clearance for your shipments.",
-  },
-  {
-    title: "Human Network Air cargo solutions ",
-    description:
-      "We utilize trusted personnel and airline staff networks to securely transport items from Guangzhou,Chengdu or Shanghai to Addis Ababa,ensuring personalized handling and seemless coordination at every transit point",
-  },
-];
-
-const testimonials = [
-  {
-    quote:
-      "Bahta Express Logistics delivered 30 x 40 HQ containers of medical furniture,equipment,and materials from Guangzhou Nansha port to Modjo Dry Port.Their seamless customs clearance,meticulous handling,and punctuality accelerated our hospital expansion. A trusted partner for critical shipments.",
-    author: "Dr. Yearaeifirae Sileshi",
-    position: "Chief Executive Officer",
-    company: "Saglan Wajee General Hospital",
-    logo: PartnerSeven,
-  },
-  {
-    quote:
-      "Bahta Express expertly managed our shipment of 60 x 40FT HQ containers from Shanghai Port to Dire Dawa and Modjo Dry Ports.(Bearings and Spare Parts) Their professionalism, clear communication, and deep logistics expertise ensured timely, secure delivery. They navigated documentation and customs seamlessly, offering competitive rates and reliable end-to-end support. An outstanding partner for Ethiopian logistics we highly recommended.",
-    author: "Ato.Amanuel Debebe",
-    position: "Chief Operations Officer",
-    company: "Debebe Shiferaw Bearing and Spare Part Import",
     logo: PartnerEleven,
   },
 ];
