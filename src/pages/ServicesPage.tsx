@@ -149,7 +149,7 @@ export default function ServicesPage() {
         <div className="mt-8 md:mt-16 w-full mx-auto space-y-20">
           {services.map((service, index) => (
             <FadeInWhenVisible key={service.id}>
-              <div className="flex flex-col md:flex-row items-center gap-x-20 gap-y-6 md:odd:flex-row-reverse">
+              <div className="flex flex-col xl:flex-row items-center gap-x-20 gap-y-6 xl:odd:flex-row-reverse">
                 <motion.div
                   className="basis-1/2 shrink-0"
                   initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
@@ -160,7 +160,7 @@ export default function ServicesPage() {
                   <img
                     src={service.image}
                     alt={service.title}
-                    className="max-w-full h-auto"
+                    className=" max-w-full sm:max-w-[50%] sm:object-center mx-auto xl:max-w-full h-auto"
                   />
                 </motion.div>
                 <div className="basis-1/2 shrink-0">

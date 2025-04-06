@@ -12,10 +12,8 @@ export default function ContactPage() {
     message: "",
   });
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -26,23 +24,33 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
 
-    // Simulate API call
-    setTimeout(() => {
-      toast.success("Thank you for your message! We'll get back to you soon.");
-      setFormData({
-        fullName: "",
-        email: "",
-        subject: "",
-        message: "",
-      });
-      setIsSubmitting(false);
-    }, 1500);
+    // Get recipient email from the contact details in the page
+    const recipient = "info@bahtaexpress.com";
+
+    // Prepare email content with URL encoding for special characters
+    const subject = encodeURIComponent(formData.subject);
+    const body = encodeURIComponent(
+      `Name: ${formData.fullName}\nEmail: ${formData.email}\n\n${formData.message}`
+    );
+
+    // Open default email client with pre-filled information
+    window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+
+    // Show success toast
+    toast.success("Opening your default email client...");
+
+    // Reset form data
+    setFormData({
+      fullName: "",
+      email: "",
+      subject: "",
+      message: "",
+    });
   };
 
   return (
-    <section className="pt-16 md:py-32 font-sans">
+    <section className="pt-16 md:py-32 font-sans mt-16">
       <div className="container px-4 mx-auto">
         <div className="mx-auto flex max-w-screen-xl flex-col justify-between gap-10 lg:flex-row lg:gap-20">
           <div className="mx-auto flex flex-col justify-between gap-10 lg:max-w-md">
@@ -54,7 +62,7 @@ export default function ContactPage() {
                 <li>
                   <span className="font-bold">Email: </span>
                   <a
-                    href="mailto:contact@bahtaexpress.com"
+                    href="mailto:info@bahtaexpress.com"
                     className="underline hover:text-orange-600 transition-colors"
                   >
                     info@bahtaexpress.com
@@ -166,9 +174,8 @@ export default function ContactPage() {
               <Button
                 type="submit"
                 className="w-full bg-orange-600 hover:bg-orange-700"
-                disabled={isSubmitting}
               >
-                {isSubmitting ? "Sending..." : "Send Message"}
+                Send Message
               </Button>
             </form>
           </div>
