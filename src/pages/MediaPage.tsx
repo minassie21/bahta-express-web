@@ -58,13 +58,6 @@ export default function MediaPage() {
               </div>
 
               <div className="p-6 relative z-10">
-                <div className="flex items-center mb-4">
-                  <div className="h-8 w-8 rounded-full bg-orange-100 flex items-center justify-center text-orange-800 font-semibold mr-3">
-                    {post.author.charAt(0)}
-                  </div>
-                  <span className="text-sm text-gray-600">{post.author}</span>
-                </div>
-
                 <h2 className="text-xl font-bold mb-3 group-hover:text-orange-600 transition-colors duration-200">
                   {post.title}
                 </h2>

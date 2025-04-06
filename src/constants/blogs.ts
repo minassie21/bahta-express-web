@@ -8,7 +8,7 @@ interface Blog {
   excerpt: string;
   image: string;
   link: string;
-  author: string;
+  author: string | undefined;
   publishDate: string;
 }
 
@@ -40,8 +40,8 @@ const blogs: Blog[] = [
       "The list of companies awarded the first batch of multimodal logistics operator licenses in Ethiopia features ...",
     image: PostImageThree,
     link: "https://www.thereporterethiopia.com/39271/",
-    author: "Hiwot Solomon",
-    publishDate: "January 22, 2024",
+    author: "Samuel Bogale",
+    publishDate: "March 16, 2024",
   },
 ];
 
