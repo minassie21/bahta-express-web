@@ -34,6 +34,9 @@ import PostImageOne from "@/assets/posts/VolumetricWeight.png";
 import PostImageTwo from "@/assets/posts/fiata-social.png";
 import PostImageThree from "@/assets/posts/Foreign-freighters.jpg";
 import { c } from "node_modules/vite/dist/node/moduleRunnerTransport.d-CXw_Ws6P";
+
+import { blogs } from "@/constants/blogs";
+
 import SEO from "@/components/SEO";
 import {
   LogisticsCompanySchema,
@@ -130,7 +133,7 @@ const testimonials = [
   {
     quote:
       "Bahta Express Logistics delivered 30 x 40 HQ containers of medical furniture,equipment,and materials from Guangzhou Nansha port to Modjo Dry Port.Their seamless customs clearance,meticulous handling,and punctuality accelerated our hospital expansion. A trusted partner for critical shipments.",
-    author: "Dr. Yearaeifirae Sileshi ",
+    author: "Dr. Yearaeifirae Sileshi",
     position: "Chief Executive Officer",
     company: "Saglan Wajee General Hospital",
     logo: PartnerSeven,
@@ -142,30 +145,6 @@ const testimonials = [
     position: "Chief Operations Officer",
     company: "Debebe Shiferaw Bearing and Spare Part Import",
     logo: PartnerEleven,
-  },
-];
-
-const blogs = [
-  {
-    title: "Calculating Chargeable Weight by Air, Ocean, Road and Rail",
-    excerpt:
-      "Whichever is greater is a phrase to remember when calculating the cost of moving goods by air, ocean, road or rail...",
-    image: PostImageOne,
-    link: "https://www.dhl.com/gt-en/home/global-forwarding/freight-forwarding-education-center/calculating-chargeable-weights.html",
-  },
-  {
-    title: "What is freight forwarding and what do forwarders do?",
-    excerpt:
-      "Freight forwarding and logistic services are services of any kind relating to the carriage (performed by single mode or multimodal transport means),...",
-    image: PostImageTwo,
-    link: "https://fiata.org/about-freight-forwarding/",
-  },
-  {
-    title: "Foreign freighters shy away from multimodal logistics operator bid",
-    excerpt:
-      "The list of companies awarded the first batch of multimodal logistics operator licenses in Ethiopia features ...",
-    image: PostImageThree,
-    link: "https://www.thereporterethiopia.com/39271/",
   },
 ];
 

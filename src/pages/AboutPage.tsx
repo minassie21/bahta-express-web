@@ -276,7 +276,7 @@ export default function AboutPage() {
               <div className="absolute -left-[41px] top-0 w-6 h-6 bg-orange-500 rounded-full"></div>
               <h3 className="text-xl font-bold mb-2">2017: Rebranding</h3>
               <p className="text-gray-600">
-                Rebranded as GIRESO, embracing innovation and expanding service
+                Re-branded as GIRESO, embracing innovation and expanding service
                 offerings.
               </p>
             </div>
