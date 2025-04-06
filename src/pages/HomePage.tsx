@@ -128,15 +128,14 @@ const testimonials = [
     author: "Dr. Yearaeifirae Sileshi ",
     position: "Chief Executive Officer",
     company: "Saglan Wajee General Hospital",
-    logo: PartnerFive,
+    logo: PartnerSeven,
   },
   {
     quote:
-      "Bahta Express transported 4 Excavators and 21 X 40 HQ Containers of Aluminum profiles and finishing materials for our head office. A vital partner for complex engineering logistics.",
-    author: "Eng.Sileshi Assefa",
-    position: "Managing Director",
-    company: "Highway Engineers and Consultants PLC",
-    logo: PartnerSeven,
+      "Bahta Express expertly managed our shipment of 60 x 40FT HQ containers from Shanghai Port to Dire Dawa and Modjo Dry Ports.(Bearings and Spare Parts) Their professionalism, clear communication, and deep logistics expertise ensured timely, secure delivery. They navigated documentation and customs seamlessly, offering competitive rates and reliable end-to-end support. An outstanding partner for Ethiopian logistics we highly recommended.",
+    author: "Ato.Amanuel Debebe",
+    position: "Chief Operations Officer",
+    logo: PartnerFive,
   },
   {
     quote:
@@ -150,23 +149,23 @@ const testimonials = [
 
 const blogs = [
   {
-    title: "Cracking Ethiopia's delivery market",
+    title: "Calculating Chargeable Weight by Air, Ocean, Road and Rail",
     excerpt:
-      "The history of digital delivery services in Ethiopia is rather short, especially when compared to other big African economies...",
+      "Whichever is greater is a phrase to remember when calculating the cost of moving goods by air, ocean, road or rail...",
     image: PostImageOne,
     link: "https://www.dhl.com/gt-en/home/global-forwarding/freight-forwarding-education-center/calculating-chargeable-weights.html",
   },
   {
-    title: "Trials and tribulations of delivery businesses",
+    title: "What is freight forwarding and what do forwarders do?",
     excerpt:
-      "Founded in September 2017, Bahta Express is a pioneer and one of the successful startups in tech-based delivery businesses...",
+      "Freight forwarding and logistic services are services of any kind relating to the carriage (performed by single mode or multimodal transport means),...",
     image: PostImageTwo,
     link: "https://fiata.org/about-freight-forwarding/",
   },
   {
-    title: "Revolutionising Last Mile Delivery in Ethiopia",
+    title: "Foreign freighters shy away from multimodal logistics operator bid",
     excerpt:
-      "Ethiopian logistics startup Bahta Express has raised funding from the Addis Ababa Angels (AAA) Network as it looks to expand across the country...",
+      "The list of companies awarded the first batch of multimodal logistics operator licenses in Ethiopia features ...",
     image: PostImageThree,
     link: "https://www.thereporterethiopia.com/39271/",
   },
@@ -271,7 +270,7 @@ export default function HomePage() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-4xl md:text-6xl font-bold text-white mb-6"
           >
-            LOGISTICS SOLUTIONS FROM CHINA TO ETHIOPIA
+            GLOBAL LOGISTICS SOLUTIONS
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -279,7 +278,7 @@ export default function HomePage() {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="text-xl text-white mb-8"
           >
-            One Partner, Limitless Possibilities.
+            Limitless Possibilities.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -302,7 +301,7 @@ export default function HomePage() {
                 size="lg"
                 className="rounded-full bg-orange-500 hover:bg-orange-600"
               >
-                Get a quote
+                Get a Quote
               </Button>
             </Link>
           </motion.div>

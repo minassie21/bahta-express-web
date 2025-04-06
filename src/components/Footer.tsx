@@ -16,7 +16,7 @@ export function Footer() {
           <p className="font-bold">Follow us on</p>
           <div className="flex gap-4 text-muted-foreground">
             <a
-              href="https://t.me/BahtaExpress"
+              href="https://t.me/bahta_express"
               target="_blank"
               rel="noreferrer"
               aria-label="Telegram"
