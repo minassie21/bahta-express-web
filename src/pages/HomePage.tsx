@@ -135,13 +135,6 @@ const testimonials = [
       "Bahta Express expertly managed our shipment of 60 x 40FT HQ containers from Shanghai Port to Dire Dawa and Modjo Dry Ports.(Bearings and Spare Parts) Their professionalism, clear communication, and deep logistics expertise ensured timely, secure delivery. They navigated documentation and customs seamlessly, offering competitive rates and reliable end-to-end support. An outstanding partner for Ethiopian logistics we highly recommended.",
     author: "Ato.Amanuel Debebe",
     position: "Chief Operations Officer",
-    logo: PartnerFive,
-  },
-  {
-    quote:
-      "Bahta Express transported 4 Excavators and 21 X 40 HQ Containers of Aluminum profiles and finishing materials for our head office. A vital partner for complex engineering logistics.",
-    author: "Ato Amanuel Debebe",
-    position: "Managing Director",
     company: "Debebe Shiferaw Bearing and Spare Part Import",
     logo: PartnerEleven,
   },
