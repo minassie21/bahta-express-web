@@ -59,4 +59,4 @@ const partners = [
   ];
 
 
-export default partners;
+export {partners};

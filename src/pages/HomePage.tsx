@@ -11,86 +11,18 @@ import {
 } from "framer-motion";
 
 import InfiniteLogoSlider from "@/components/InfinteLogoSlider";
-
-import PartnerOne from "@/assets/partner-1.png";
-import PartnerTwo from "@/assets/partner-2.png";
-import PartnerThree from "@/assets/partner-3.png";
-import PartnerFour from "@/assets/partner-4.png";
-import PartnerFive from "@/assets/partner-5.png";
-import PartnerSix from "@/assets/partner-6.png";
-import PartnerSeven from "@/assets/partner-7.png";
-import PartnerEight from "@/assets/partner-8.png";
-import PartnerNine from "@/assets/partner-9.png";
-import PartnerTen from "@/assets/partner-10.png";
-import PartnerEleven from "@/assets/partner-11.png";
-
 import heroBackground from "@/assets/hero-background.jpeg";
-
-import OceanFreignImage from "@/assets/services/OceanFreight.png";
-import AirFreigImage from "@/assets/services/AirFreight.png";
-import CustomsImage from "@/assets/services/Customs.png";
-
-import PostImageOne from "@/assets/posts/VolumetricWeight.png";
-import PostImageTwo from "@/assets/posts/fiata-social.png";
-import PostImageThree from "@/assets/posts/Foreign-freighters.jpg";
-import { c } from "node_modules/vite/dist/node/moduleRunnerTransport.d-CXw_Ws6P";
 
 import { blogs } from "@/constants/blogs";
 import { services, logisticsServices } from "@/constants/services";
 import { testimonials } from "@/constants/testimonials";
+import { partners } from "@/constants/partners";
 
 import SEO from "@/components/SEO";
 import {
   LogisticsCompanySchema,
   ServicesSchema,
 } from "@/components/StructuredData";
-
-const partners = [
-  {
-    name: "Partner 1",
-    logo: PartnerOne,
-  },
-  {
-    name: "Partner 2",
-    logo: PartnerTwo,
-  },
-  {
-    name: "Partner 3",
-    logo: PartnerThree,
-  },
-  {
-    name: "Partner 4",
-    logo: PartnerFour,
-  },
-  {
-    name: "Partner 5",
-    logo: PartnerFive,
-  },
-  {
-    name: "Partner 6",
-    logo: PartnerSix,
-  },
-  {
-    name: "Partner 7",
-    logo: PartnerSeven,
-  },
-  {
-    name: "Partner 8",
-    logo: PartnerEight,
-  },
-  {
-    name: "Partner 9",
-    logo: PartnerNine,
-  },
-  {
-    name: "Partner 10",
-    logo: PartnerTen,
-  },
-  {
-    name: "Partner 11",
-    logo: PartnerEleven,
-  },
-];
 
 // animation variants
 const fadeInUp: Variants = {
