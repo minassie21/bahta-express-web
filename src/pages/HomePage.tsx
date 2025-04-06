@@ -106,7 +106,7 @@ export default function HomePage() {
   return (
     <>
       <SEO
-        title="Global Logistics Solutions | Bahta Express Logistics"
+        title="Bahta Express Logistics | Global Logistics Solutions"
         description="Expert China-Ethiopia logistics since 1977. Specialized in air cargo, ocean freight, customs clearance and warehousing services. Trusted by industry leaders."
         canonical="https://bahtaexpress.com/"
       />
