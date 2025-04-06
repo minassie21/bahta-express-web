@@ -278,7 +278,7 @@ export default function HomePage() {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="text-xl text-white mb-8"
           >
-            Limitless Possibilities.
+            Limitless Possibilities
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
