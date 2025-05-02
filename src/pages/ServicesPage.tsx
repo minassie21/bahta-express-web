@@ -247,7 +247,7 @@ export default function ServicesPage() {
               requirements.
             </p>
             <Link
-              to="/contact"
+              to="/quote"
               className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-orange-600 hover:bg-orange-700"
             >
               Get a Quote

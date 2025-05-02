@@ -182,7 +182,7 @@ export default function HomePage() {
                   Call
                 </Button>
               </a>
-              <Link to="/contact">
+              <Link to="/quote">
                 <Button
                   aria-label="Get a Quote"
                   size="lg"

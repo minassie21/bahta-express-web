@@ -71,7 +71,7 @@ export function Header() {
             </Button>
           </a>
 
-          <Link to="/contact">
+          <Link to="/quote">
             <Button
               aria-label="get a quote"
               className="group shadow-sm relative rounded-full border border-gray-200 bg-white text-sm p-2 font-semibold overflow-hidden"
@@ -175,7 +175,7 @@ export function Header() {
                           Call Us
                         </Button>
                       </a>
-                      <Link to="/contact" className="block">
+                      <Link to="/quote" className="block">
                         <Button
                           aria-label="Get a quote"
                           className="w-full bg-orange-500 hover:bg-orange-600 text-white rounded-full"

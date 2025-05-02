@@ -5,6 +5,7 @@ import AboutPage from "./pages/AboutPage";
 import ServicesPage from "./pages/ServicesPage";
 import ContactPage from "./pages/ContactPage";
 import MediaPage from "./pages/MediaPage";
+import QuotePage from "./pages/QuotePage";
 import { Toaster } from "sonner";
 import { HelmetProvider } from "react-helmet-async";
 
@@ -19,6 +20,7 @@ function App() {
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/media" element={<MediaPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/quote" element={<QuotePage />} />
           </Routes>
         </Layout>
         <Toaster position="top-right" />
