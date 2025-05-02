@@ -149,14 +149,21 @@ export default function HomePage() {
         >
           <div className="absolute inset-0 bg-black bg-opacity-50" />
           <div className="container mx-auto relative z-10 text-center">
-            <motion.h1
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-4xl md:text-6xl font-bold text-white mb-6"
+              className="mb-6"
             >
-              GLOBAL LOGISTICS SOLUTIONS
-            </motion.h1>
+              <h1 className="text-4xl md:text-6xl font-bold text-white tracking-wide">
+                <span className="block bg-clip-text text-transparent bg-gradient-to-r from-white via-orange-90 to-white mb-1 filter drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]">
+                  GLOBAL LOGISTICS
+                </span>
+                <span className="block bg-clip-text text-transparent bg-gradient-to-r from-white via-orange-50 to-white filter drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]">
+                  SOLUTIONS
+                </span>
+              </h1>
+            </motion.div>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -186,7 +193,7 @@ export default function HomePage() {
                 <Button
                   aria-label="Get a Quote"
                   size="lg"
-                  className="rounded-full bg-orange-500 hover:bg-orange-600"
+                  className="rounded-full bg-orange-500 hover:bg-orange-600 shadow-md border-2 border-white/30"
                 >
                   Get a Quote
                 </Button>
