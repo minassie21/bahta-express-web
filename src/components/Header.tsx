@@ -38,8 +38,8 @@ export function Header() {
                   to={link.path}
                   className={({ isActive }) =>
                     cn(
-                      "relative inline-block cursor-pointer transition-colors smooth-link",
-                      isActive && "text-orange-600 font-medium"
+                      "font-display text-sm font-medium relative inline-block cursor-pointer transition-colors smooth-link",
+                      isActive && "text-orange-600 font-semibold"
                     )
                   }
                 >
@@ -55,7 +55,7 @@ export function Header() {
             <Button
               variant="outline"
               size="sm"
-              className="hidden sm:inline-flex rounded-full backdrop-blur-sm bg-white/70 border-gray-100/50 shadow-sm ring-1 ring-gray-200/20 hover:bg-white/90 transition-all"
+              className="hidden sm:inline-flex font-display rounded-full backdrop-blur-sm bg-white/70 border-gray-100/50 shadow-sm ring-1 ring-gray-200/20 hover:bg-white/90 transition-all"
               aria-label="Call us"
             >
               <Phone className="mr-2 h-4 w-4" />
@@ -65,8 +65,8 @@ export function Header() {
 
           <Link to="/quote">
             <Button
-              aria-label="get a quote"
-              className="group shadow-sm relative rounded-full border border-gray-100/50 bg-white/70 backdrop-blur-sm text-sm p-2 font-semibold overflow-hidden ring-1 ring-gray-200/20"
+              aria-label="request a logistics quote"
+              className="group shadow-sm relative rounded-full border border-gray-100/50 bg-white/70 backdrop-blur-sm text-sm p-2 font-display font-semibold overflow-hidden ring-1 ring-gray-200/20"
             >
               <span className="absolute inset-0 w-full h-full bg-orange-500/90 backdrop-blur-sm rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
               <span className="absolute left-2 top-1/2 transform -translate-y-1/2 w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center transition-transform duration-200 ease-in-out group-hover:translate-x-28">

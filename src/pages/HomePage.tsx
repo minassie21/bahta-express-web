@@ -118,19 +118,19 @@ export default function HomePage() {
           {
             name: "Ocean Freight Solutions",
             description:
-              "LCL,FCL Shipments via ESL,China to Ethiopia Ports.Break Bulk/Heavy Lift Experience,Compliant with Import and Export Regulation",
+              "LCL, FCL Shipments via ESL, China to Ethiopia Ports. Break Bulk/Heavy Lift Experience, Compliant with Import and Export Regulations.",
             url: "https://bahtaexpress.com/services#ocean-freight",
           },
           {
             name: "Air Freight Cargo",
             description:
-              "Competitive Air cargo Via Ethiopian,Saudi,Emirates Airlines from major Chinese cities to Addis Ababa. Guaranteed space,Rapid Transit.",
+              "Competitive Air Cargo via Ethiopian, Saudi, Emirates Airlines from major Chinese cities to Addis Ababa. Guaranteed space, Rapid Transit.",
             url: "https://bahtaexpress.com/services#air-freight",
           },
           {
-            name: "Customs and Regulatory compliance",
+            name: "Customs and Regulatory Compliance",
             description:
-              "Expert China-Ethiopia export and import Customs documentation. Duty optimization strategies minimize delays and avoid penalities.",
+              "Expert China-Ethiopia export and import customs documentation. Duty optimization strategies minimize delays and avoid penalties.",
             url: "https://bahtaexpress.com/services#customs-compliance",
           },
         ]}
@@ -156,7 +156,7 @@ export default function HomePage() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="mb-6"
             >
-              <h1 className="text-4xl md:text-6xl font-bold text-white tracking-wide">
+              <h1 className="font-display text-4xl md:text-6xl font-bold text-white tracking-wide">
                 <span className="block bg-clip-text text-transparent bg-gradient-to-r from-white via-orange-90 to-white mb-1 filter drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]">
                   GLOBAL LOGISTICS
                 </span>
@@ -169,7 +169,7 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="text-xl text-white mb-8"
+              className="font-display text-xl text-white mb-8"
             >
               Limitless Possibilities
             </motion.p>
@@ -207,8 +207,8 @@ export default function HomePage() {
         <section className="py-12 bg-gray-50 overflow-hidden">
           <div className="container w-[90vw] sm:w-[50vw] mx-auto px-6">
             <FadeInWhenVisible>
-              <h2 className="text-center text-lg font-medium text-gray-700 mb-8">
-                Chosen by Industry Pioneers
+              <h2 className="text-center font-display text-lg font-medium text-gray-700 mb-8">
+                Trusted by Industry Leaders
               </h2>
             </FadeInWhenVisible>
             <FadeInWhenVisible variants={fadeIn}>
@@ -226,10 +226,11 @@ export default function HomePage() {
               </h2>
             </FadeInWhenVisible>
             <FadeInWhenVisible>
-              <p className="text-center text-gray-600 mb-12">
-                Seamless air cargo, ocean freight, and end-to-end logistics
-                solutions - Tailored for speed, scale, and your unique supply
-                chain needs. One partner, limitless possibilities.
+              <p className="text-center text-gray-600 mb-12 max-w-3xl mx-auto">
+                We deliver seamless air cargo, ocean freight, and end-to-end
+                logistics solutions—meticulously tailored for speed,
+                reliability, and your specific supply chain requirements. One
+                trusted partner, endless possibilities.
               </p>
             </FadeInWhenVisible>
 
@@ -251,7 +252,9 @@ export default function HomePage() {
                     alt={service.title}
                     className="mb-4 h-48 object-contain"
                   />
-                  <h3 className="text-xl font-bold mb-2">{service.title}</h3>
+                  <h3 className="text-xl font-display font-bold mb-2">
+                    {service.title}
+                  </h3>
                   <p className="text-gray-600 mb-4 flex-grow">
                     {service.description}
                   </p>
@@ -285,8 +288,8 @@ export default function HomePage() {
         <section className="py-16 bg-orange-50">
           <div className="container mx-auto px-6">
             <FadeInWhenVisible>
-              <h2 className="text-3xl font-bold text-center mb-4">
-                Seamless Logistics Services
+              <h2 className="text-3xl font-display font-bold text-center mb-4">
+                Comprehensive Logistics Solutions
               </h2>
             </FadeInWhenVisible>
             <FadeInWhenVisible>
@@ -309,7 +312,9 @@ export default function HomePage() {
                   variants={fadeInUp}
                   className="bg-white p-6 rounded-lg shadow-sm"
                 >
-                  <h3 className="text-xl font-bold mb-2">{service.title}</h3>
+                  <h3 className="text-xl font-display font-bold mb-2">
+                    {service.title}
+                  </h3>
                   <p className="text-gray-600">{service.description}</p>
                 </motion.div>
               ))}
@@ -321,8 +326,8 @@ export default function HomePage() {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-6">
             <FadeInWhenVisible>
-              <h2 className="text-3xl font-bold mb-12">
-                Providing Services Since 1977
+              <h2 className="text-3xl font-display font-bold mb-12 text-center">
+                Excellence in Logistics Since 1977
               </h2>
             </FadeInWhenVisible>
 
@@ -337,24 +342,28 @@ export default function HomePage() {
                 variants={fadeInUp}
                 className="bg-orange-500 text-white p-8 rounded-lg"
               >
-                <h3 className="text-2xl font-bold mb-2">
-                  Weights of goods moved
+                <h3 className="text-2xl font-display font-bold mb-2">
+                  Cargo Delivered
                 </h3>
                 <p className="mb-4">
-                  Over 10 Million Metric Ton delivered. Zero Compromises
+                  Over 10 million metric tons shipped with precision and care—a
+                  testament to our unwavering commitment to excellence.
                 </p>
-                <span className="text-4xl font-bold"> 10M+</span>
+                <span className="text-4xl font-display font-bold"> 10M+</span>
               </motion.div>
 
               <motion.div
                 variants={fadeInUp}
                 className="bg-orange-500 text-white p-8 rounded-lg"
               >
-                <h3 className="text-2xl font-bold mb-2">Years of Experience</h3>
+                <h3 className="text-2xl font-display font-bold mb-2">
+                  Years of Expertise
+                </h3>
                 <p className="mb-4">
-                  Since 1977: Pioneering Logistics, Powering Progress
+                  Since 1977: Nearly five decades of pioneering logistics
+                  innovation, building trust, and delivering results.
                 </p>
-                <span className="text-4xl font-bold">47+</span>
+                <span className="text-4xl font-display font-bold">47+</span>
               </motion.div>
             </motion.div>
           </div>
@@ -364,9 +373,7 @@ export default function HomePage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-6">
             <FadeInWhenVisible>
-              <h2 className="text-3xl font-bold text-center mb-8">
-                What Our Clients Say
-              </h2>
+              <h2 className="text-3xl font- mb-8">What Our Clients Say</h2>
             </FadeInWhenVisible>
             <FadeInWhenVisible variants={fadeIn}>
               <div className="max-w-4xl mx-auto relative md:w-full sm:w-[90vw]">
@@ -394,7 +401,7 @@ export default function HomePage() {
                                 className="h-12 w-12 object-contain"
                               />
                               <div>
-                                <p className="font-bold text-gray-900">
+                                <p className="font-display font-bold text-gray-900">
                                   {testimonial.author}
                                 </p>
                                 <p className="text-gray-600">
@@ -455,8 +462,8 @@ export default function HomePage() {
         <section className="py-16">
           <div className="container mx-auto px-6">
             <FadeInWhenVisible>
-              <h2 className="text-3xl font-bold text-center mb-12">
-                Read Our Latest Post
+              <h2 className="text-3xl font-display font-bold text-center mb-12">
+                Industry Insights & Updates
               </h2>
             </FadeInWhenVisible>
 
@@ -478,7 +485,9 @@ export default function HomePage() {
                     alt={blog.title}
                     className="mb-4 h-48 object-cover rounded-lg"
                   />
-                  <h3 className="text-xl font-bold mb-2">{blog.title}</h3>
+                  <h3 className="text-xl font-display font-bold mb-2">
+                    {blog.title}
+                  </h3>
                   <p className="text-gray-600 mb-4 flex-grow">{blog.excerpt}</p>
                   <a
                     href={blog.link}
@@ -486,7 +495,7 @@ export default function HomePage() {
                     rel="noreferrer"
                     className="text-orange-500 hover:text-orange-600 inline-flex items-center"
                   >
-                    Continue Reading
+                    Read Full Article
                     <svg
                       className="ml-2 h-4 w-4"
                       fill="none"
