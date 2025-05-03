@@ -12,6 +12,7 @@ import {
 
 import InfiniteLogoSlider from "@/components/InfinteLogoSlider";
 import heroBackground from "@/assets/hero-background.jpeg";
+// import heroBackground from "@/assets/main-background.png";
 
 import { blogs } from "@/constants/blogs";
 import { services, logisticsServices } from "@/constants/services";
