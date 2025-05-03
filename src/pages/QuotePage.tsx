@@ -108,9 +108,9 @@ export default function QuotePage() {
       <div className="container px-4 mx-auto">
         <div className="max-w-4xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.2 }}
             className="text-center mb-10"
           >
             <h1 className="text-3xl md:text-4xl font-bold mb-4">Get a Quote</h1>
@@ -121,8 +121,22 @@ export default function QuotePage() {
             </p>
           </motion.div>
 
-          <div className="bg-white p-6 md:p-8 rounded-lg border shadow-sm">
-            <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
+          <div className="relative bg-white p-6 mb-8 md:p-8 rounded-lg border shadow-sm overflow-hidden">
+            {/* decorative background */}
+            <div className="absolute top-2 left-16 w-64 h-64 rounded-full bg-orange-500 opacity-30 z-0"></div>
+            <div className="absolute top-20 left-6 w-64 h-64 rounded-full bg-blue-500 opacity-30 z-0"></div>
+            <div className="absolute top-10 right-20 w-64 h-64 rounded-full bg-orange-500 opacity-30 z-0"></div>
+            <div className="absolute top-60 right-40 w-64 h-64 rounded-full bg-red-500 opacity-30 z-0"></div>
+            <div className="absolute bottom-60 left-40 w-64 h-64 rounded-full bg-red-500 opacity-30 z-0"></div>
+            <div className="absolute bottom-24 right-40 w-96 h-64 rounded-full bg-pink-500 opacity-30 z-0"></div>
+
+            {/* Semi-transparent background with blur */}
+            <div className="absolute inset-0 backdrop-blur-2xl bg-white/80 z-10 rounded-lg"></div>
+
+            <form
+              className="relative flex flex-col gap-6 z-20"
+              onSubmit={handleSubmit}
+            >
               {/* Personal Information */}
               <div className="space-y-4">
                 <h2 className="text-xl font-semibold pb-2 border-b">
