@@ -1,36 +1,45 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { motion } from "framer-motion";
-
-// Service type options
-const serviceTypes = [
-  "Ocean Freight",
-  "Air Freight",
-  "Customs Clearance",
-  "Warehousing",
-  "Documentation Services",
-  "Human Network Air Cargo",
-];
+import { sendQuote } from "@/apis/quote";
+import { getServices } from "@/apis/services";
 
 export default function QuotePage() {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    first_name: "",
+    last_name: "",
     email: "",
-    phoneNumber: "",
-    serviceTypes: [] as string[],
-    originAddress: "",
-    destinationAddress: "",
-    weight: "",
+    phone_number: "",
+    service_list: [] as { service_id: string; name: string }[],
+    origin_address: "",
+    destination_address: "",
+    weight_kg: "",
     dimensions: "",
-    numberOfPieces: "",
+    number_of_pieces: "",
     commodity: "",
-    additionalInfo: "",
+    additional_info: "",
   });
+
+  const [services, setServices] = useState<
+    { service_id: string; service_name: string }[]
+  >([]);
+
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const res = await getServices();
+        setServices(res);
+      } catch (err) {
+        console.error("Failed to load services", err);
+      }
+    };
+
+    fetchServices();
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -42,65 +51,66 @@ export default function QuotePage() {
     }));
   };
 
-  const handleCheckboxChange = (serviceType: string) => {
+  const handleCheckboxChange = (service: {
+    service_id: string;
+    service_name: string;
+  }) => {
     setFormData((prev) => {
-      const updatedServiceTypes = prev.serviceTypes.includes(serviceType)
-        ? prev.serviceTypes.filter((type) => type !== serviceType)
-        : [...prev.serviceTypes, serviceType];
-
+      const exists = prev.service_list.some(
+        (s) => s.service_id === service.service_id
+      );
       return {
         ...prev,
-        serviceTypes: updatedServiceTypes,
+        service_list: exists
+          ? prev.service_list.filter((s) => s.service_id !== service.service_id)
+          : [
+              ...prev.service_list,
+              { service_id: service.service_id, name: service.service_name },
+            ],
       };
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Get recipient email
-    const recipient = "info@bahtaexpress.com";
+    // Prepare the payload for the backend
+    const quoteData = {
+      first_name: formData.first_name,
+      last_name: formData.last_name,
+      email: formData.email,
+      phone_number: formData.phone_number,
+      origin_address: formData.origin_address,
+      destination_address: formData.destination_address,
+      weight_kg: formData.weight_kg,
+      dimensions: formData.dimensions,
+      number_of_pieces: formData.number_of_pieces,
+      commodity: formData.commodity,
+      additional_info: formData.additional_info,
+      service_list: formData.service_list,
+    };
 
-    // Format the selected service types
-    const selectedServices = formData.serviceTypes.join(", ");
+    try {
+      await sendQuote(quoteData);
 
-    // Prepare email content with URL encoding for special characters
-    const subject = encodeURIComponent("Quote Request");
-    const body = encodeURIComponent(
-      `Name: ${formData.firstName} ${formData.lastName}\n` +
-        `Email: ${formData.email}\n` +
-        `Phone: ${formData.phoneNumber}\n\n` +
-        `Service Types: ${selectedServices}\n\n` +
-        `Origin: ${formData.originAddress}\n` +
-        `Destination: ${formData.destinationAddress}\n\n` +
-        `Weight: ${formData.weight}\n` +
-        `Dimensions: ${formData.dimensions}\n` +
-        `Number of Pieces: ${formData.numberOfPieces}\n` +
-        `Commodity: ${formData.commodity}\n\n` +
-        `Additional Information:\n${formData.additionalInfo}`
-    );
-
-    // Open default email client with pre-filled information
-    window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
-
-    // Show success toast
-    toast.success("Opening your default email client...");
-
-    // Reset form data
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      phoneNumber: "",
-      serviceTypes: [],
-      originAddress: "",
-      destinationAddress: "",
-      weight: "",
-      dimensions: "",
-      numberOfPieces: "",
-      commodity: "",
-      additionalInfo: "",
-    });
+      toast.success("Quote request submitted!");
+      setFormData({
+        first_name: "",
+        last_name: "",
+        email: "",
+        phone_number: "",
+        service_list: [],
+        origin_address: "",
+        destination_address: "",
+        weight_kg: "",
+        dimensions: "",
+        number_of_pieces: "",
+        commodity: "",
+        additional_info: "",
+      });
+    } catch (error) {
+      toast.error("There was an issue submitting the quote.");
+    }
   };
 
   return (
@@ -148,8 +158,8 @@ export default function QuotePage() {
                     <Label htmlFor="firstName">First Name</Label>
                     <Input
                       id="firstName"
-                      name="firstName"
-                      value={formData.firstName}
+                      name="first_name"
+                      value={formData.first_name}
                       onChange={handleChange}
                       placeholder="Enter your first name"
                       required
@@ -160,8 +170,8 @@ export default function QuotePage() {
                     <Label htmlFor="lastName">Last Name</Label>
                     <Input
                       id="lastName"
-                      name="lastName"
-                      value={formData.lastName}
+                      name="last_name"
+                      value={formData.last_name}
                       onChange={handleChange}
                       placeholder="Enter your last name"
                       required
@@ -187,8 +197,8 @@ export default function QuotePage() {
                     <Label htmlFor="phoneNumber">Phone Number</Label>
                     <Input
                       id="phoneNumber"
-                      name="phoneNumber"
-                      value={formData.phoneNumber}
+                      name="phone_number"
+                      value={formData.phone_number}
                       onChange={handleChange}
                       placeholder="Enter your phone number"
                       required
@@ -203,17 +213,25 @@ export default function QuotePage() {
                   Service Types
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-                  {serviceTypes.map((service) => (
-                    <div key={service} className="flex items-center space-x-2">
+                  {services.map((service) => (
+                    <div
+                      key={service.service_id}
+                      className="flex items-center space-x-2"
+                    >
                       <input
                         type="checkbox"
-                        id={service}
-                        checked={formData.serviceTypes.includes(service)}
+                        id={service.service_id}
+                        checked={formData.service_list.some(
+                          (s) => s.service_id === service.service_id
+                        )}
                         onChange={() => handleCheckboxChange(service)}
                         className="h-4 w-4 text-orange-500 border-gray-300 rounded focus:ring-orange-500"
                       />
-                      <Label htmlFor={service} className="cursor-pointer">
-                        {service}
+                      <Label
+                        htmlFor={service.service_id}
+                        className="cursor-pointer"
+                      >
+                        {service.service_name}
                       </Label>
                     </div>
                   ))}
@@ -233,8 +251,8 @@ export default function QuotePage() {
                     </Label>
                     <Input
                       id="originAddress"
-                      name="originAddress"
-                      value={formData.originAddress}
+                      name="origin_address"
+                      value={formData.origin_address}
                       onChange={handleChange}
                       placeholder="Where is the shipment from?"
                       required
@@ -247,8 +265,8 @@ export default function QuotePage() {
                     </Label>
                     <Input
                       id="destinationAddress"
-                      name="destinationAddress"
-                      value={formData.destinationAddress}
+                      name="destination_address"
+                      value={formData.destination_address}
                       onChange={handleChange}
                       placeholder="Where is the shipment going to?"
                       required
@@ -268,8 +286,8 @@ export default function QuotePage() {
                     <Label htmlFor="weight">Weight (kg)</Label>
                     <Input
                       id="weight"
-                      name="weight"
-                      value={formData.weight}
+                      name="weight_kg"
+                      value={formData.weight_kg}
                       onChange={handleChange}
                       placeholder="Estimated weight"
                     />
@@ -290,8 +308,8 @@ export default function QuotePage() {
                     <Label htmlFor="numberOfPieces">Number of Pieces</Label>
                     <Input
                       id="numberOfPieces"
-                      name="numberOfPieces"
-                      value={formData.numberOfPieces}
+                      name="number_of_pieces"
+                      value={formData.number_of_pieces}
                       onChange={handleChange}
                       placeholder="How many items?"
                     />
@@ -316,8 +334,8 @@ export default function QuotePage() {
                 <Label htmlFor="additionalInfo">Additional Information</Label>
                 <Textarea
                   id="additionalInfo"
-                  name="additionalInfo"
-                  value={formData.additionalInfo}
+                  name="additional_info"
+                  value={formData.additional_info}
                   onChange={handleChange}
                   placeholder="Please provide any additional details relevant to your shipment."
                   rows={4}
