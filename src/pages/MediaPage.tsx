@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { blogs } from "@/constants/blogs";
+import { getAllBlogs } from "@/apis/blog";
+// import { blogs } from "@/constants/blogs";
 
 export default function MediaPage() {
+  const [blogs, setBlogs] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      const data = await getAllBlogs();
+      setBlogs(data);
+    };
+
+    fetchBlogs();
+  }, []);
+
   return (
     <div className="pt-24 pb-16 bg-gray-50">
       <div className="container mx-auto px-4">
@@ -47,12 +59,16 @@ export default function MediaPage() {
 
               <div className="relative">
                 <div className="absolute top-0 right-0 bg-orange-500 text-white text-xs px-3 py-1 rounded-bl-lg z-10">
-                  {post.publishDate}
+                  {new Date(post.created_at).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric",
+                  })}
                 </div>
                 <div
                   className="h-60 bg-gray-200 bg-cover bg-center transform group-hover:scale-105 transition-transform duration-500 ease-out"
                   style={{
-                    backgroundImage: `url(${post.image})`,
+                    backgroundImage: `url(${import.meta.env.VITE_API_URL}/public/uploads/images/blog/${post.image_url})`,
                   }}
                 />
               </div>
@@ -68,7 +84,7 @@ export default function MediaPage() {
 
                 <div className="pt-2 border-t border-gray-100">
                   <a
-                    href={post.link}
+                    href={`/blog/detail/${post.post_id}`}
                     target="_blank"
                     rel="noreferrer"
                     className="text-orange-500 hover:text-orange-600 inline-flex items-center font-medium transition-colors duration-200"

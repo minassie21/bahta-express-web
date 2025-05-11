@@ -8,6 +8,7 @@ import MediaPage from "./pages/MediaPage";
 import QuotePage from "./pages/QuotePage";
 import { Toaster } from "sonner";
 import { HelmetProvider } from "react-helmet-async";
+import BlogDetailPage from "./pages/BlogDetailPage";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/media" element={<MediaPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/quote" element={<QuotePage />} />
+            <Route path="/blog/detail/:postId" element={<BlogDetailPage />} />
           </Routes>
         </Layout>
         <Toaster position="top-right" />

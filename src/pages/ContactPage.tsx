@@ -1,17 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
+import emailjs from "@emailjs/browser";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
-    fullName: "",
+    full_name: "",
     email: "",
     subject: "",
     message: "",
   });
+  const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
+  }, []);
+  
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -22,31 +28,35 @@ export default function ContactPage() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
 
-    // Get recipient email from the contact details in the page
-    const recipient = "info@bahtaexpress.com";
+    try {
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          name: formData.full_name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        }
+      );
 
-    // Prepare email content with URL encoding for special characters
-    const subject = encodeURIComponent(formData.subject);
-    const body = encodeURIComponent(
-      `Name: ${formData.fullName}\nEmail: ${formData.email}\n\n${formData.message}`
-    );
-
-    // Open default email client with pre-filled information
-    window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
-
-    // Show success toast
-    toast.success("Opening your default email client...");
-
-    // Reset form data
-    setFormData({
-      fullName: "",
-      email: "",
-      subject: "",
-      message: "",
-    });
+      toast.success("Message sent successfully!");
+      setFormData({
+        full_name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("Email sending failed:", error);
+      toast.error("Failed to send message. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -102,15 +112,15 @@ export default function ContactPage() {
               <div className="grid w-full items-center gap-2">
                 <label
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  htmlFor="fullName"
+                  htmlFor="full_name"
                 >
                   Full Name
                 </label>
                 <Input
                   type="text"
-                  id="fullName"
-                  name="fullName"
-                  value={formData.fullName}
+                  id="full_name"
+                  name="full_name"
+                  value={formData.full_name}
                   onChange={handleChange}
                   placeholder="Enter your full name"
                   required
@@ -175,8 +185,9 @@ export default function ContactPage() {
                 aria-label="Send Message"
                 type="submit"
                 className="w-full bg-orange-600 hover:bg-orange-700"
+                disabled={loading}
               >
-                Send Message
+                {loading ? "Sending..." : "Send Message"}
               </Button>
             </form>
           </div>

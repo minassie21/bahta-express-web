@@ -14,7 +14,7 @@ import InfiniteLogoSlider from "@/components/InfinteLogoSlider";
 import heroBackground from "@/assets/hero-background.jpeg";
 // import heroBackground from "@/assets/main-background.png";
 
-import { blogs } from "@/constants/blogs";
+// import { blogs } from "@/constants/blogs";
 import { services, logisticsServices } from "@/constants/services";
 import { testimonials } from "@/constants/testimonials";
 import { partners } from "@/constants/partners";
@@ -24,6 +24,7 @@ import {
   LogisticsCompanySchema,
   ServicesSchema,
 } from "@/components/StructuredData";
+import { getBlogs } from "@/apis/blog";
 
 // animation variants
 const fadeInUp: Variants = {
@@ -91,6 +92,16 @@ const FadeInWhenVisible: React.FC<{
 
 export default function HomePage() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [blogs, setBlogs] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      const data = await getBlogs();
+      setBlogs(data);
+    };
+
+    fetchBlogs();
+  }, []);
 
   const nextTestimonial = () => {
     setCurrentTestimonial((prev) =>
@@ -481,14 +492,16 @@ export default function HomePage() {
                   className="flex flex-col h-full bg-gradient-to-b from-white to-gray-50 border border-gray-200 rounded-3xl shadow-sm p-6"
                 >
                   <img
-                    src={blog.image}
+                    src={`${import.meta.env.VITE_API_URL}/public/uploads/images/blog/${blog.image_url}`}
                     alt={blog.title}
                     className="mb-4 h-48 object-cover rounded-lg"
                   />
                   <h3 className="text-xl font-display font-bold mb-2">
                     {blog.title}
                   </h3>
-                  <p className="text-gray-600 mb-4 flex-grow">{blog.excerpt}</p>
+                  <p className="text-gray-600 mb-4 flex-grow">
+                    {blog.excerpt}...
+                  </p>
                   <a
                     href={blog.link}
                     target="_blank"

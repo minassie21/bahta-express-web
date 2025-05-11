@@ -23,6 +23,7 @@ export default function QuotePage() {
     commodity: "",
     additional_info: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [services, setServices] = useState<
     { service_id: string; service_name: string }[]
@@ -89,8 +90,12 @@ export default function QuotePage() {
       additional_info: formData.additional_info,
       service_list: formData.service_list,
     };
-
+    if (formData.service_list.length === 0) {
+      toast.error("Please select at least one service type.");
+      return;
+    }
     try {
+      setIsSubmitting(true);
       await sendQuote(quoteData);
 
       toast.success("Quote request submitted!");
@@ -110,6 +115,8 @@ export default function QuotePage() {
       });
     } catch (error) {
       toast.error("There was an issue submitting the quote.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -345,9 +352,10 @@ export default function QuotePage() {
               <Button
                 aria-label="Request Quote"
                 type="submit"
+                disabled={isSubmitting}
                 className="w-full bg-orange-600 hover:bg-orange-700 mt-4 text-lg py-6"
               >
-                Request a Quote
+                {isSubmitting ? "Submitting..." : "Request a Quote"}
               </Button>
             </form>
           </div>

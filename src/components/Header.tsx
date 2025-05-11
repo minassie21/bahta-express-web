@@ -1,13 +1,11 @@
 import { Link, NavLink } from "react-router-dom";
 import { Button } from "./ui/button";
-import { Phone, Menu, X } from "lucide-react";
+import { Phone, Menu, X, LogIn } from "lucide-react";
 import { cn } from "@/lib/utils";
 import logo from "@/assets/bahta-express-logo.png";
-import { motion, AnimatePresence } from "framer-motion";
 
 export function Header() {
   const handleMobileMenuToggle = () => {
-    // Dispatch a custom event to notify the MobileNavigation component
     const event = new CustomEvent("toggle-mobile-menu", {
       detail: { isOpen: true },
     });
@@ -62,7 +60,17 @@ export function Header() {
               Call
             </Button>
           </a>
-
+          <a href="https://dashboard.bahtaexpress.com/dashboard/default">
+            <Button
+              variant="outline"
+              size="sm"
+              className="hidden sm:inline-flex font-display rounded-full backdrop-blur-sm bg-white/70 border-gray-100/50 shadow-sm ring-1 ring-gray-200/20 hover:bg-white/90 transition-all"
+              aria-label="Login"
+            >
+              <LogIn className="mr-2 h-4 w-4" />
+              Login
+            </Button>
+          </a>
           <Link to="/quote">
             <Button
               aria-label="request a logistics quote"
