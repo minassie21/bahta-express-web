@@ -8,7 +8,7 @@ export const sendQuote = async (formData: any): Promise<void> => {
       },
     });
 
-    
+    return response.data;
   } catch (error: any) {
     console.error(
       "Error sending quote:",
