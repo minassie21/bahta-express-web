@@ -28,7 +28,7 @@ export const getAllBlogs = async (): Promise<any[]> => {
 export const getBlogDetail = async (blogId: any): Promise<any[]> => {
   try {
     const response = await axios.get(`/blog/details/${blogId}`);
-    console.log(response);
+
     return response.data.data;
   } catch (error: any) {
     console.error(

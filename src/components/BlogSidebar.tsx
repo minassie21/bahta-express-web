@@ -18,7 +18,7 @@ function BlogSidebar({ blog, blogTags }: { blog: any; blogTags: any }) {
 
   const { tags } = useTags();
   const { post_id } = useParams();
-  //   console.log(blog.post_id);
+
   useEffect(() => {
     const fetchRelatedBlogs = async () => {
       try {

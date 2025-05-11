@@ -19,7 +19,7 @@ streamToPromise(Readable.from(urls).pipe(stream))
   .then((data) => {
     // Write the XML to file
     createWriteStream('./dist/sitemap.xml').write(data.toString());
-    console.log('Sitemap generated successfully!');
+    // console.log('Sitemap generated successfully!');
   })
   .catch((error) => {
     console.error('Error generating sitemap:', error);

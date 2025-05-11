@@ -12,7 +12,7 @@ const distDir = path.join(__dirname, "../../dist");
 
 async function optimizeImages() {
   try {
-    console.log("Starting image optimization...");
+    // console.log("Starting image optimization...");
 
     // Check if sharp is installed
     try {
