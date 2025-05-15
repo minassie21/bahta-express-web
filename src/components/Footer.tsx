@@ -83,16 +83,26 @@ export function Footer() {
                 <a
                   target="_blank"
                   rel="noreferrer"
-                  href="https://maps.app.goo.gl/"
+                  href="https://maps.app.goo.gl/FwQeEAfhMkHadYdM6"
                   className="hover:text-orange-500 transition-colors"
                 >
                   3rd Floor, Bethel Bicha Building, Addis Ababa, Ethiopia
                 </a>
               </p>
               <p className="mt-2">
-                <span className="font-medium">24/7 Support:</span> +251911282956
-                / +251911258790
+                <span className="font-medium">24/7 Support:</span>{" "}
+                <a href="tel:+251911282956" className=" hover:text-orange-500">
+                  +251911282956
+                </a>{" "}
+                /{" "}
+                <a
+                  href="tel:+251911258790"
+                  className=" hover:text-orange-500 text-decoration-none"
+                >
+                  +251911258790
+                </a>
               </p>
+
               <p className="mt-2">
                 <span className="font-medium">Email:</span>{" "}
                 <a
@@ -108,52 +118,52 @@ export function Footer() {
               <p className="font-display font-bold mb-4">Quick Links</p>
               <ul className="space-y-2">
                 <li>
-                  <Link
-                    to="/"
+                  <a
+                    href="/"
                     className="hover:text-orange-500 transition-colors"
                   >
                     Home
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link
-                    to="/about"
+                  <a
+                    href="/about"
                     className="hover:text-orange-500 transition-colors"
                   >
                     About Us
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link
-                    to="/services"
+                  <a
+                    href="/services"
                     className="hover:text-orange-500 transition-colors"
                   >
                     Logistics Services
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link
-                    to="/media"
+                  <a
+                    href="/media"
                     className="hover:text-orange-500 transition-colors"
                   >
                     Media Center
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link
-                    to="/contact"
+                  <a
+                    href="/contact"
                     className="hover:text-orange-500 transition-colors"
                   >
                     Contact Us
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link
-                    to="/quote"
+                  <a
+                    href="/quote"
                     className="hover:text-orange-500 transition-colors"
                   >
                     Request Quote
-                  </Link>
+                  </a>
                 </li>
               </ul>
             </div>

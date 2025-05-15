@@ -64,13 +64,14 @@ export function Header() {
             <Button
               variant="outline"
               size="sm"
-              className="hidden sm:inline-flex font-display rounded-full backdrop-blur-sm bg-white/70 border-gray-100/50 shadow-sm ring-1 ring-gray-200/20 hover:bg-white/90 transition-all"
+              className=" sm:inline-flex font-display rounded-full backdrop-blur-sm bg-white/70 border-gray-100/50 shadow-sm ring-1 ring-gray-200/20 hover:bg-white/90 transition-all"
               aria-label="Login"
             >
               <LogIn className="mr-2 h-4 w-4" />
               Login
             </Button>
           </a>
+
           <Link to="/quote">
             <Button
               aria-label="request a logistics quote"
@@ -98,7 +99,6 @@ export function Header() {
               </span>
             </Button>
           </Link>
-
           {/* Mobile Menu Toggle */}
           <div className="md:hidden">
             <Button

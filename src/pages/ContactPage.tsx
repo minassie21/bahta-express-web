@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import emailjs from "@emailjs/browser";
+import Modal from "@/components/ui/Modal";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -13,11 +14,12 @@ export default function ContactPage() {
     message: "",
   });
   const [loading, setLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
   }, []);
-  
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -44,7 +46,9 @@ export default function ContactPage() {
         }
       );
 
-      toast.success("Message sent successfully!");
+      // toast.success("Message sent successfully!");
+      setShowModal(true);
+
       setFormData({
         full_name: "",
         email: "",
@@ -193,6 +197,12 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
+      <Modal
+        title="Message Sent!"
+        message="Thank you for contacting us. We'll respond shortly."
+        showModal={showModal}
+        setShowModal={setShowModal}
+      />
     </section>
   );
 }

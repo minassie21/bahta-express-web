@@ -98,19 +98,18 @@ function BlogSidebar({ blog, blogTags }: { blog: any; blogTags: any }) {
         <div className="flex flex-wrap gap-2">
           {Array.isArray(blogTags) &&
             blogTags.map((tag, index) => (
-              <a
-                href="/blog"
+              <p
                 key={index}
-                className="px-3 py-1 text-sm bg-yellow-100 text-gray-700 rounded-full hover:bg-orange-100 hover:text-orange-600 transition-colors duration-200"
+                className=" cursor-pointer px-3 py-1 text-sm bg-yellow-100 text-gray-700 rounded-full hover:bg-orange-100 hover:text-orange-600 transition-colors duration-200"
               >
                 {tag}
-              </a>
+              </p>
             ))}
         </div>
       </div>
 
       {/* Author */}
-      <div className="bg-white p-6 rounded-md shadow text-center">
+      {/* <div className="bg-white p-6 rounded-md shadow text-center">
         <div className="w-20 h-20 mx-auto bg-orange-200 text-orange-800 rounded-full flex items-center justify-center text-xl font-bold">
           {getInitials(blog?.author_name)}
         </div>
@@ -119,7 +118,7 @@ function BlogSidebar({ blog, blogTags }: { blog: any; blogTags: any }) {
           Hello and welcome! I'm the author of this blog and I’m excited to
           share my insights with you.
         </p>
-      </div>
+      </div> */}
     </div>
   );
 }

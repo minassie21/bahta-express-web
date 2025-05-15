@@ -87,7 +87,6 @@ function BlogDetailPage() {
           alt="Blog Header"
           className="rounded-lg shadow-lg w-full object-cover"
         />
-
         <div className="text-sm text-gray-600 mt-4">
           <ul className="flex flex-wrap items-center gap-4">
             <li className="flex items-center gap-1">
@@ -106,9 +105,12 @@ function BlogDetailPage() {
             </li>
           </ul>
         </div>
-
         <h1 className="mt-6 text-3xl font-bold text-gray-900">{blog?.title}</h1>
-        <h6 className="mt-6 text-1xl font-bold text-gray-600">{blog?.slug}</h6>
+        {blog?.slug && (
+          <h6 className="mt-6 text-1xl font-bold text-gray-600">
+            {blog?.slug}
+          </h6>
+        )}
         <p
           className="mt-4 text-lg text-gray-700"
           dangerouslySetInnerHTML={{

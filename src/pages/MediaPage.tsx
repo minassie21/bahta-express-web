@@ -85,7 +85,6 @@ export default function MediaPage() {
                 <div className="pt-2 border-t border-gray-100">
                   <a
                     href={`/blog/detail/${post.post_id}`}
-                    target="_blank"
                     rel="noreferrer"
                     className="text-orange-500 hover:text-orange-600 inline-flex items-center font-medium transition-colors duration-200"
                   >
@@ -126,7 +125,7 @@ export default function MediaPage() {
             about Bahta Express, please contact our media relations team.
           </p>
           <a
-            href="mailto:media@bahtaexpress.com"
+            href="/contact"
             className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-orange-600 hover:bg-orange-700 transition-colors duration-200 shadow-sm hover:shadow"
           >
             Contact Media Relations

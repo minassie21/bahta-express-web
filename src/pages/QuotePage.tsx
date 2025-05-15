@@ -7,6 +7,7 @@ import { toast } from "sonner";
 import { motion } from "framer-motion";
 import { sendQuote } from "@/apis/quote";
 import { getServices } from "@/apis/services";
+import Modal from "@/components/ui/Modal";
 
 export default function QuotePage() {
   const [formData, setFormData] = useState({
@@ -24,6 +25,7 @@ export default function QuotePage() {
     additional_info: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const [services, setServices] = useState<
     { service_id: string; service_name: string }[]
@@ -96,23 +98,28 @@ export default function QuotePage() {
     }
     try {
       setIsSubmitting(true);
-      await sendQuote(quoteData);
+    const success =  await sendQuote(quoteData);
 
-      toast.success("Quote request submitted!");
-      setFormData({
-        first_name: "",
-        last_name: "",
-        email: "",
-        phone_number: "",
-        service_list: [],
-        origin_address: "",
-        destination_address: "",
-        weight_kg: "",
-        dimensions: "",
-        number_of_pieces: "",
-        commodity: "",
-        additional_info: "",
-      });
+      
+      if (success) {
+        setShowModal(true)
+    
+        // toast.success("Quote request submitted!");
+        setFormData({
+          first_name: "",
+          last_name: "",
+          email: "",
+          phone_number: "",
+          service_list: [],
+          origin_address: "",
+          destination_address: "",
+          weight_kg: "",
+          dimensions: "",
+          number_of_pieces: "",
+          commodity: "",
+          additional_info: "",
+        });
+      }
     } catch (error) {
       toast.error("There was an issue submitting the quote.");
     } finally {
@@ -361,6 +368,12 @@ export default function QuotePage() {
           </div>
         </div>
       </div>
+      <Modal
+        title="Quote Requested!"
+        message="Thank you for submitting your quote request. We will get back to you shortly."
+        showModal={showModal}
+        setShowModal={setShowModal}
+      />
     </section>
   );
 }

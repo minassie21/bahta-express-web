@@ -503,8 +503,7 @@ export default function HomePage() {
                     {blog.excerpt}...
                   </p>
                   <a
-                    href={blog.link}
-                    target="_blank"
+                    href={`/blog/detail/${blog.post_id}`}
                     rel="noreferrer"
                     className="text-orange-500 hover:text-orange-600 inline-flex items-center"
                   >
