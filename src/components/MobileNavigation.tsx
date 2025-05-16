@@ -24,9 +24,13 @@ export function MobileNavigation() {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
-    { name: "Services", path: "/services" },
+    { name: "Services", path: "/service" },
     { name: "Media", path: "/media" },
     { name: "Contact", path: "/contact" },
+    {
+      name: "Login",
+      path: "https://dashboard.bahtaexpress.com/dashboard/default",
+    },
   ];
 
   // Listen for header's menu button click
@@ -108,8 +112,8 @@ export function MobileNavigation() {
                     Call Us
                   </Button>
                 </a>
-                <Link
-                  to="/quote"
+                <a
+                  href="/quote"
                   onClick={() => setMobileMenuOpen(false)}
                   className="block"
                 >
@@ -119,7 +123,7 @@ export function MobileNavigation() {
                   >
                     Get a Quote
                   </Button>
-                </Link>
+                </a>
               </div>
             </motion.div>
           </>

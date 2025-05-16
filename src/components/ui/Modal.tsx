@@ -18,11 +18,11 @@ const Modal: React.FC<ModalProps> = ({
   };
 
   return (
-    <div className="bg-gray-100 p-4 min-h-screen">
-      {showModal && (
+    showModal && (
+      <div className="bg-gray-100 p-4 min-h-screen">
         <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white rounded-2xl shadow-lg w-full max-w-md p-6 text-center">
-            <div className="flex items-center justify-center w-16 h-16 mx-auto bg-green-100 text-green-600 rounded-full">
+            <div className="flex items-center justify-center w-16 h-16 mx-auto bg-orange-100 text-orange-600 rounded-full">
               <svg
                 className="w-8 h-8"
                 fill="none"
@@ -43,14 +43,14 @@ const Modal: React.FC<ModalProps> = ({
             <p className="mt-2 text-gray-600">{message}</p>
             <button
               onClick={closeModal}
-              className="mt-4 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
+              className="mt-4 px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700"
             >
               OK
             </button>
           </div>
         </div>
-      )}
-    </div>
+      </div>
+    )
   );
 };
 

@@ -15,7 +15,7 @@ export function Header() {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
-    { name: "Services", path: "/services" },
+    { name: "Services", path: "/service" },
     { name: "Media", path: "/media" },
     { name: "Contact", path: "/contact" },
   ];
@@ -64,7 +64,7 @@ export function Header() {
             <Button
               variant="outline"
               size="sm"
-              className=" sm:inline-flex font-display rounded-full backdrop-blur-sm bg-white/70 border-gray-100/50 shadow-sm ring-1 ring-gray-200/20 hover:bg-white/90 transition-all"
+              className="hidden sm:inline-flex font-display rounded-full backdrop-blur-sm bg-white/70 border-gray-100/50 shadow-sm ring-1 ring-gray-200/20 hover:bg-white/90 transition-all"
               aria-label="Login"
             >
               <LogIn className="mr-2 h-4 w-4" />
@@ -72,7 +72,7 @@ export function Header() {
             </Button>
           </a>
 
-          <Link to="/quote">
+          <a href="/quote">
             <Button
               aria-label="request a logistics quote"
               className="group shadow-sm relative rounded-full border border-gray-100/50 bg-white/70 backdrop-blur-sm text-sm p-2 font-display font-semibold overflow-hidden ring-1 ring-gray-200/20"
@@ -98,7 +98,7 @@ export function Header() {
                 Get a quote
               </span>
             </Button>
-          </Link>
+          </a>
           {/* Mobile Menu Toggle */}
           <div className="md:hidden">
             <Button

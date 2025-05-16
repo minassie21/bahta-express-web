@@ -1,21 +1,21 @@
-import { useState, useEffect, ReactNode } from "react";
+import { useState, useEffect } from "react";
 import { motion, useMotionValue, animate } from "framer-motion";
 import useMeasure from "react-use-measure";
+import { getClients } from "@/apis/client";
 
-interface ProgressiveBlurProps {
-  direction?: "left" | "right";
-  blurIntensity?: number;
-  className?: string;
-  [key: string]: any;
+// Import your data-fetching function
+
+interface Logo {
+  name: string;
+  logo: string;
 }
 
-// Progressive blur component for edge fading
 const ProgressiveBlur = ({
   direction = "left",
   blurIntensity = 1,
   className = "",
   ...props
-}: ProgressiveBlurProps) => {
+}: any) => {
   const gradientDirection = direction === "left" ? "to right" : "to left";
 
   return (
@@ -33,18 +33,6 @@ const ProgressiveBlur = ({
   );
 };
 
-interface InfiniteSliderProps {
-  children: ReactNode;
-  gap?: number;
-  speed?: number;
-  speedOnHover?: number;
-  direction?: "horizontal" | "vertical";
-  reverse?: boolean;
-  className?: string;
-  [key: string]: any;
-}
-
-// Infinite slider with hover effect
 const InfiniteSlider = ({
   children,
   gap = 16,
@@ -54,7 +42,7 @@ const InfiniteSlider = ({
   reverse = false,
   className = "",
   ...props
-}: InfiniteSliderProps) => {
+}: any) => {
   const [currentSpeed, setCurrentSpeed] = useState(speed);
   const [ref, { width, height }] = useMeasure();
   const translation = useMotionValue(0);
@@ -143,16 +131,18 @@ const InfiniteSlider = ({
   );
 };
 
-interface Logo {
-  name: string;
-  logo: string;
-}
+export default function InfiniteLogoSlider() {
+  const [clientsLogo, setClientsLogo] = useState<Logo[]>([]);
 
-interface InfiniteLogoSliderProps {
-  logos: Logo[];
-}
+  useEffect(() => {
+    const fetchClients = async () => {
+      const clients = await getClients();
+      setClientsLogo(clients);
+    };
 
-export default function InfiniteLogoSlider({ logos }: InfiniteLogoSliderProps) {
+    fetchClients();
+  }, []);
+
   return (
     <div className="relative overflow-hidden w-full py-6">
       <InfiniteSlider
@@ -161,22 +151,20 @@ export default function InfiniteLogoSlider({ logos }: InfiniteLogoSliderProps) {
         gap={40}
         className="relative py-6 w-full"
       >
-        {logos.map((logo, index) => (
+        {clientsLogo.map((logo, index) => (
           <div key={index} className="flex flex-shrink-0 items-center">
             <img
               className="w-auto h-16 sm:h-16 object-contain opacity-80 hover:opacity-100 transition-all duration-300"
-              src={logo.logo}
+              src={`${import.meta.env.VITE_API_URL}/public/uploads/images/ClientLogos/${logo.logo}`}
               alt={logo.name}
             />
           </div>
         ))}
       </InfiniteSlider>
 
-      {/* Gradient fades */}
       <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-gray-50 to-transparent hidden sm:absolute"></div>
       <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-gray-50 to-transparent"></div>
 
-      {/* Progressive blur effect */}
       <ProgressiveBlur
         className="pointer-events-none absolute left-0 top-0 h-full w-6 sm:w-20"
         direction="left"

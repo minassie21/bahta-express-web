@@ -25,6 +25,8 @@ import {
   ServicesSchema,
 } from "@/components/StructuredData";
 import { getBlogs } from "@/apis/blog";
+import AnimatedCounter from "@/components/AnimatedCounter";
+import { getClients, getWhatClientsSays } from "@/apis/client";
 
 // animation variants
 const fadeInUp: Variants = {
@@ -93,11 +95,17 @@ const FadeInWhenVisible: React.FC<{
 export default function HomePage() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [blogs, setBlogs] = useState<any[]>([]);
+  const [whatClientsSays, setWhatClientsSays] = useState<any[]>([]);
+  const [clientsLogo, setClientsLogo] = useState<any[]>([]);
 
   useEffect(() => {
     const fetchBlogs = async () => {
-      const data = await getBlogs();
-      setBlogs(data);
+      const blog = await getBlogs();
+      const testimonial = await getWhatClientsSays();
+      const clients = await getClients();
+      setBlogs(blog);
+      setWhatClientsSays(testimonial);
+      setClientsLogo(clients);
     };
 
     fetchBlogs();
@@ -105,13 +113,13 @@ export default function HomePage() {
 
   const nextTestimonial = () => {
     setCurrentTestimonial((prev) =>
-      prev === testimonials.length - 1 ? 0 : prev + 1
+      prev === whatClientsSays.length - 1 ? 0 : prev + 1
     );
   };
 
   const prevTestimonial = () => {
     setCurrentTestimonial((prev) =>
-      prev === 0 ? testimonials.length - 1 : prev - 1
+      prev === 0 ? whatClientsSays.length - 1 : prev - 1
     );
   };
 
@@ -130,19 +138,19 @@ export default function HomePage() {
             name: "Ocean Freight Solutions",
             description:
               "LCL, FCL Shipments via ESL, China to Ethiopia Ports. Break Bulk/Heavy Lift Experience, Compliant with Import and Export Regulations.",
-            url: "https://bahtaexpress.com/services#ocean-freight",
+            url: "https://bahtaexpress.com/service#ocean-freight",
           },
           {
             name: "Air Freight Cargo",
             description:
               "Competitive Air Cargo via Ethiopian, Saudi, Emirates Airlines from major Chinese cities to Addis Ababa. Guaranteed space, Rapid Transit.",
-            url: "https://bahtaexpress.com/services#air-freight",
+            url: "https://bahtaexpress.com/service#air-freight",
           },
           {
             name: "Customs and Regulatory Compliance",
             description:
               "Expert China-Ethiopia export and import customs documentation. Duty optimization strategies minimize delays and avoid penalties.",
-            url: "https://bahtaexpress.com/services#customs-compliance",
+            url: "https://bahtaexpress.com/service#customs-compliance",
           },
         ]}
       />
@@ -201,7 +209,7 @@ export default function HomePage() {
                   Call
                 </Button>
               </a>
-              <Link to="/quote">
+              <a href="/quote">
                 <Button
                   aria-label="Get a Quote"
                   size="lg"
@@ -209,7 +217,7 @@ export default function HomePage() {
                 >
                   Get a Quote
                 </Button>
-              </Link>
+              </a>
             </motion.div>
           </div>
         </section>
@@ -223,7 +231,7 @@ export default function HomePage() {
               </h2>
             </FadeInWhenVisible>
             <FadeInWhenVisible variants={fadeIn}>
-              <InfiniteLogoSlider logos={partners} />
+              <InfiniteLogoSlider />
             </FadeInWhenVisible>
           </div>
         </section>
@@ -269,8 +277,8 @@ export default function HomePage() {
                   <p className="text-gray-600 mb-4 flex-grow">
                     {service.description}
                   </p>
-                  <Link
-                    to="/services"
+                  <a
+                    href="/service"
                     className="text-orange-500 hover:text-orange-600 inline-flex items-center"
                   >
                     Learn more
@@ -288,7 +296,7 @@ export default function HomePage() {
                         d="M9 5l7 7-7 7"
                       ></path>
                     </svg>
-                  </Link>
+                  </a>
                 </motion.div>
               ))}
             </motion.div>
@@ -360,7 +368,10 @@ export default function HomePage() {
                   Over 10 million metric tons shipped with precision and care—a
                   testament to our unwavering commitment to excellence.
                 </p>
-                <span className="text-4xl font-display font-bold"> 10M+</span>
+                <span className="text-4xl font-display font-bold">
+                  <AnimatedCounter target={10} />
+                  M+
+                </span>
               </motion.div>
 
               <motion.div
@@ -374,7 +385,9 @@ export default function HomePage() {
                   Since 1977: Nearly five decades of pioneering logistics
                   innovation, building trust, and delivering results.
                 </p>
-                <span className="text-4xl font-display font-bold">47+</span>
+                <span className="text-4xl font-display font-bold">
+                  <AnimatedCounter target={47} />+
+                </span>
               </motion.div>
             </motion.div>
           </div>
@@ -396,30 +409,30 @@ export default function HomePage() {
                     }}
                   >
                     <div className="flex">
-                      {testimonials.map((testimonial, index) => (
+                      {whatClientsSays.map((testimonial, index) => (
                         <div
                           key={index}
                           className="w-full flex-shrink-0 p-2 sm:p-6"
                         >
                           <div className="bg-white p-4 sm:p-8 rounded-lg shadow-sm mx-2 sm:mx-8">
                             <p className="italic text-gray-700 mb-4 text-lg">
-                              "{testimonial.quote}"
+                              "{testimonial.message}"
                             </p>
                             <div className="mt-6 flex items-center gap-4">
                               <img
-                                src={testimonial.logo}
-                                alt={`${testimonial.company} logo`}
+                                src={`${import.meta.env.VITE_API_URL}/public/uploads/images/ClientLogos/${testimonial.logo_url}`}
+                                alt={`${testimonial.company_name} logo`}
                                 className="h-12 w-12 object-contain"
                               />
                               <div>
                                 <p className="font-display font-bold text-gray-900">
-                                  {testimonial.author}
+                                  {testimonial.name}
                                 </p>
                                 <p className="text-gray-600">
-                                  {testimonial.position}
+                                  {testimonial.client_role}
                                 </p>
                                 <p className="text-gray-500 text-sm">
-                                  {testimonial.company}
+                                  {testimonial.company_name}
                                 </p>
                               </div>
                             </div>

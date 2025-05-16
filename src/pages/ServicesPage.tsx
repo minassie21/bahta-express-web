@@ -7,6 +7,7 @@ import AirFreigImage from "@/assets/services/AirFreight.png";
 import CustomsImage from "@/assets/services/Customs.png";
 import HumanNetworkImage from "@/assets/services/HumanNetwork.png";
 import ShippingRoadmapImage from "@/assets/services/ShippingRoadmap.png";
+import InfiniteLogoSlider from "@/components/InfinteLogoSlider";
 
 // Animation variants
 const fadeInUp: Variants = {
@@ -253,6 +254,16 @@ export default function ServicesPage() {
               Get a Quote
             </Link>
           </FadeInWhenVisible>
+        </div>
+      </section>
+      {/* Partners */}
+      <section className="w-full py-12 bg-gray-50 overflow-hidden">
+        <div className="container w-[90vw] sm:w-[50vw] mx-auto px-6">
+          <h2 className="text-center font-display text-lg font-medium text-gray-700 mb-5">
+            Trusted by Industry Leaders
+          </h2>
+
+          <InfiniteLogoSlider />
         </div>
       </section>
     </div>

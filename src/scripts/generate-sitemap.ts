@@ -6,7 +6,7 @@ import { Readable } from 'stream';
 const urls = [
   { url: '/', changefreq: 'weekly', priority: 1.0 },
   { url: '/about', changefreq: 'monthly', priority: 0.8 },
-  { url: '/services', changefreq: 'weekly', priority: 0.9 },
+  { url: '/service', changefreq: 'weekly', priority: 0.9 },
   { url: '/media', changefreq: 'weekly', priority: 0.7 },
   { url: '/contact', changefreq: 'monthly', priority: 0.8 },
 ];

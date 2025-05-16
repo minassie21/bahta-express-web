@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { getAllBlogs } from "@/apis/blog";
+import InfiniteLogoSlider from "@/components/InfinteLogoSlider";
 // import { blogs } from "@/constants/blogs";
 
 export default function MediaPage() {
@@ -132,6 +133,16 @@ export default function MediaPage() {
           </a>
         </motion.div>
       </div>
+      {/* Partners */}
+      <section className="w-full py-12 bg-gray-50 overflow-hidden">
+        <div className="container w-[90vw] sm:w-[50vw] mx-auto px-6">
+          <h2 className="text-center font-display text-lg font-medium text-gray-700 mb-5">
+            Trusted by Industry Leaders
+          </h2>
+
+          <InfiniteLogoSlider />
+        </div>
+      </section>
     </div>
   );
 }

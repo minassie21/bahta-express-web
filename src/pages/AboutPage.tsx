@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import GiresoLogo from "@/assets/about/Gireso-logo.png";
+import InfiniteLogoSlider from "@/components/InfinteLogoSlider";
 
 export default function AboutPage() {
   // Animation variants
@@ -292,6 +293,17 @@ export default function AboutPage() {
           </div>
         </motion.div>
       </div>
+
+      {/* Partners */}
+      <section className="py-12 bg-gray-50 overflow-hidden">
+        <div className="container w-[90vw] sm:w-[50vw] mx-auto px-6">
+          <h2 className="text-center font-display text-lg font-medium text-gray-700 ">
+            Trusted by Industry Leaders
+          </h2>
+
+          <InfiniteLogoSlider />
+        </div>
+      </section>
     </div>
   );
 }
