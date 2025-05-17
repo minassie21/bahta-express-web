@@ -9,6 +9,7 @@ import { sendQuote } from "@/apis/quote";
 import { getServices } from "@/apis/services";
 import Modal from "@/components/ui/Modal";
 import InfiniteLogoSlider from "@/components/InfinteLogoSlider";
+import { Countries } from "@/constants/Countries";
 
 export default function QuotePage() {
   const [formData, setFormData] = useState({
@@ -64,6 +65,14 @@ export default function QuotePage() {
       [name]: value,
     }));
   };
+  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
   const handleCargoChange = (
     index: number,
     e: React.ChangeEvent<HTMLInputElement>
@@ -317,28 +326,43 @@ export default function QuotePage() {
                       <Label htmlFor="originAddress">
                         Origin Address/Country
                       </Label>
-                      <Input
+                      <select
                         id="originAddress"
                         name="origin_address"
                         value={formData.origin_address}
-                        onChange={handleChange}
-                        placeholder="Where is the shipment from?"
+                        onChange={handleSelectChange}
                         required
-                      />
+                        className={`w-full p-2 border rounded-md focus:border-orange-500 focus:outline-none`}
+                      >
+                        <option value="" style={{ color: "gray" }}>
+                          Where is the shipment from?
+                        </option>
+                        {Countries.map((country) => (
+                          <option key={country.code} value={country.name}>
+                            {country.name}
+                          </option>
+                        ))}
+                      </select>
                     </div>
-
                     <div className="space-y-2">
                       <Label htmlFor="destinationAddress">
                         Destination Address/Country
                       </Label>
-                      <Input
+                      <select
                         id="destinationAddress"
                         name="destination_address"
                         value={formData.destination_address}
-                        onChange={handleChange}
-                        placeholder="Where is the shipment going to?"
+                        onChange={handleSelectChange}
                         required
-                      />
+                        className={`w-full p-2 border rounded-md focus:border-orange-500 focus:outline-none`}
+                      >
+                        <option value="">Where is the shipment going?</option>
+                        {Countries.map((country) => (
+                          <option key={country.code} value={country.name}>
+                            {country.name}
+                          </option>
+                        ))}
+                      </select>
                     </div>
                   </div>
                 </div>
