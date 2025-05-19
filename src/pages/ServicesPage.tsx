@@ -247,12 +247,12 @@ export default function ServicesPage() {
               can meet your specific needs and support your business or personal
               requirements.
             </p>
-            <Link
-              to="/quote"
+            <a
+              href="/quote"
               className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-orange-600 hover:bg-orange-700"
             >
               Get a Quote
-            </Link>
+            </a>
           </FadeInWhenVisible>
         </div>
       </section>
