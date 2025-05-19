@@ -2,6 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet-async";
 
 interface ServiceSchema {
+  id: string
   name: string;
   description: string;
   url: string;
@@ -51,6 +52,7 @@ export const ServicesSchema: React.FC<{ services: ServiceSchema[] }> = ({
   const structuredData = services.map((service) => ({
     "@context": "https://schema.org",
     "@type": "Service",
+    id: service.id,
     name: service.name,
     description: service.description,
     provider: {

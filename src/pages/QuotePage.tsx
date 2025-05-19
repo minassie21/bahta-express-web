@@ -20,10 +20,8 @@ export default function QuotePage() {
     service_list: [] as { service_id: string; name: string }[],
     origin_address: "",
     destination_address: "",
-    weight_kg: "",
-    dimensions: "",
-    number_of_pieces: "",
-    commodity: "",
+    city: "",
+    address: "",
     additional_info: "",
     cargos: [
       {
@@ -150,6 +148,8 @@ export default function QuotePage() {
       phone_number: formData.phone_number,
       origin_address: formData.origin_address,
       destination_address: formData.destination_address,
+      city: formData.city,
+      address: formData.address,
       additional_info: formData.additional_info,
       service_list: formData.service_list,
       cargos: formData.cargos,
@@ -174,10 +174,8 @@ export default function QuotePage() {
           service_list: [],
           origin_address: "",
           destination_address: "",
-          weight_kg: "",
-          dimensions: "",
-          number_of_pieces: "",
-          commodity: "",
+          city: "",
+          address: "",
           additional_info: "",
           cargos: [
             {
@@ -393,6 +391,37 @@ export default function QuotePage() {
                       </div>
                     </div>
                   </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="city">City</Label>
+                      <div className="flex items-center space-x-2">
+                        <Input
+                          type="text"
+                          id="city"
+                          name="city"
+                          value={formData.city}
+                          onChange={handleChange}
+                          placeholder="Enter your city"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="address">Address</Label>
+                      <div className="flex items-center space-x-2">
+                        <Input
+                          type="text"
+                          id="address"
+                          name="address"
+                          value={formData.address}
+                          onChange={handleChange}
+                          placeholder="123 Main St, Springfield, IL 62704"
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Cargo Details */}
@@ -418,7 +447,7 @@ export default function QuotePage() {
                         </div>
 
                         <div className="space-y-2">
-                          <Label>Dimensions (LxWxH)</Label>
+                          <Label>Dimensions (LxWxH) / CBM</Label>
                           <Input
                             name="dimensions"
                             value={cargo.dimensions}

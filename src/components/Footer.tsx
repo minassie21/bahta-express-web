@@ -130,7 +130,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="/service"
+                  href="/service/all"
                   className="hover:text-orange-500 transition-colors"
                 >
                   Logistics Services

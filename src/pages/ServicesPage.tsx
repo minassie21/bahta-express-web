@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect, useRef } from "react";
 import { motion, useAnimation, Variants, useInView } from "framer-motion";
 
@@ -75,28 +75,28 @@ const FadeInWhenVisible: React.FC<{
 
 const services = [
   {
-    id: "express",
+    id: "ocean-freight",
     title: "Ocean Freight Solutions",
     description:
       "At Bahta Express,We provide comprehensive ocean freight services to meet every shipping need-whether you are moving small cargo,Full Containers or oversized Equipment. Our ocean freight services are LCL(Less than a Container Load)- ideal for Smaller Shipments.Pay only for the Space you need !         FCL(Full Container load)- Best for large volume shipments. Secure,Fast,and dedicated- Your goods travel alone in a sealed Container !        Break Bulk and Heavy Lift - For non-Containerized,Oversized,or heavy cargo.Customized securing,handling,and documentation ",
     image: OceanFreignImage,
   },
   {
-    id: "same-day",
+    id: "air-freight",
     title: "Air Freight Cargo",
     description:
       "At Bahta Express Logistics we deliver speedy and secure air cargo solutions to keep supply chain moving- Whether for urgent,High value, or time sensetive shipments. our Air freight services are standard air freight, Express Air freight, and Charter Services !.",
     image: AirFreigImage,
   },
   {
-    id: "next-day",
+    id: "customs-compliance",
     title: "Customs and Regulatory compliance  ",
     description:
       "We handle all the customs formalities and regulatory requirements to ensure your shipments clears boarders without delays ! Our expertise on full documentation support , duty and tax optimization, PVOC and Standard compliance comes with No suprises and delays !.",
     image: CustomsImage,
   },
   {
-    id: "additional",
+    id: "human-network",
     title: "Human Network Air cargo solutions",
     description:
       " Human Network Air Cargo Solutions, we redefine air freight by combining the power of trusted personnel, airline staff networks, and meticulous coordination to ensure your cargo arrives safely and efficiently. Specializing in routes from China key hubs—Guangzhou, Chengdu, and Shanghai—to Addis Ababa, we prioritize security, speed, and personalized service for every shipment..",
@@ -138,6 +138,11 @@ const processSteps = [
   },
 ];
 export default function ServicesPage() {
+  const { service_id } = useParams();
+  const filteredServices =
+    service_id === "all" || !service_id
+      ? services
+      : services.filter((s) => s.id === service_id);
   return (
     <div className="min-h-screen flex items-center justify-center mt-20 flex-col gap-10">
       <div className="max-w-screen-lg w-full py-10 px-6">
@@ -148,7 +153,7 @@ export default function ServicesPage() {
         </FadeInWhenVisible>
 
         <div className="mt-8 md:mt-16 w-full mx-auto space-y-20">
-          {services.map((service, index) => (
+          {filteredServices.map((service, index) => (
             <FadeInWhenVisible key={service.id}>
               <div className="flex flex-col xl:flex-row items-center gap-x-20 gap-y-6 xl:odd:flex-row-reverse">
                 <motion.div

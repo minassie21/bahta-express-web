@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Phone, ChevronLeft, ChevronRight } from "lucide-react";
@@ -96,16 +96,16 @@ export default function HomePage() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [blogs, setBlogs] = useState<any[]>([]);
   const [whatClientsSays, setWhatClientsSays] = useState<any[]>([]);
-  const [clientsLogo, setClientsLogo] = useState<any[]>([]);
+  // const [clientsLogo, setClientsLogo] = useState<any[]>([]);
 
   useEffect(() => {
     const fetchBlogs = async () => {
       const blog = await getBlogs();
       const testimonial = await getWhatClientsSays();
-      const clients = await getClients();
+      // const clients = await getClients();
       setBlogs(blog);
       setWhatClientsSays(testimonial);
-      setClientsLogo(clients);
+      // setClientsLogo(clients);
     };
 
     fetchBlogs();
@@ -135,18 +135,21 @@ export default function HomePage() {
       <ServicesSchema
         services={[
           {
+            id: "ocean-freight",
             name: "Ocean Freight Solutions",
             description:
               "LCL, FCL Shipments via ESL, China to Ethiopia Ports. Break Bulk/Heavy Lift Experience, Compliant with Import and Export Regulations.",
             url: "https://bahtaexpress.com/service#ocean-freight",
           },
           {
+            id: "air-freight",
             name: "Air Freight Cargo",
             description:
               "Competitive Air Cargo via Ethiopian, Saudi, Emirates Airlines from major Chinese cities to Addis Ababa. Guaranteed space, Rapid Transit.",
             url: "https://bahtaexpress.com/service#air-freight",
           },
           {
+            id: "customs-compliance",
             name: "Customs and Regulatory Compliance",
             description:
               "Expert China-Ethiopia export and import customs documentation. Duty optimization strategies minimize delays and avoid penalties.",
@@ -278,7 +281,7 @@ export default function HomePage() {
                     {service.description}
                   </p>
                   <a
-                    href="/service"
+                    href={`/service/${service.id}`}
                     className="text-orange-500 hover:text-orange-600 inline-flex items-center"
                   >
                     Learn more
