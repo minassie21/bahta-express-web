@@ -18,10 +18,12 @@ export default function QuotePage() {
     email: "",
     phone_number: "",
     service_list: [] as { service_id: string; name: string }[],
+    origin_country: "",
+    origin_city: "",
     origin_address: "",
+    destination_country: "",
+    destination_city: "",
     destination_address: "",
-    city: "",
-    address: "",
     additional_info: "",
     cargos: [
       {
@@ -103,11 +105,11 @@ export default function QuotePage() {
   }
 
   const selectedOrigin = Countries.find(
-    (c) => c.name === formData.origin_address
+    (c) => c.name === formData.origin_country
   );
 
   const selectedDestination = Countries.find(
-    (c) => c.name === formData.destination_address
+    (c) => c.name === formData.destination_country
   );
   const addCargoInput = () => {
     setFormData((prev) => ({
@@ -146,10 +148,12 @@ export default function QuotePage() {
       last_name: formData.last_name,
       email: formData.email,
       phone_number: formData.phone_number,
+      origin_country: formData.origin_country,
+      origin_city: formData.origin_city,
       origin_address: formData.origin_address,
+      destination_country: formData.destination_country,
+      destination_city: formData.destination_city,
       destination_address: formData.destination_address,
-      city: formData.city,
-      address: formData.address,
       additional_info: formData.additional_info,
       service_list: formData.service_list,
       cargos: formData.cargos,
@@ -172,10 +176,12 @@ export default function QuotePage() {
           email: "",
           phone_number: "",
           service_list: [],
+          origin_country: "",
+          origin_city: "",
           origin_address: "",
+          destination_country: "",
+          destination_city: "",
           destination_address: "",
-          city: "",
-          address: "",
           additional_info: "",
           cargos: [
             {
@@ -323,99 +329,127 @@ export default function QuotePage() {
                 </div>
 
                 {/* Shipping Details */}
-                <div className="space-y-4">
+
+                <div className="space-y-6">
                   <h2 className="text-xl font-semibold pb-2 border-b">
                     Shipping Details
                   </h2>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="originAddress">
-                        Origin Address/Country
-                      </Label>
-                      <div className="flex items-center space-x-2">
-                        {selectedOrigin && (
-                          <img
-                            src={getFlagUrl(selectedOrigin.code)}
-                            alt={`${selectedOrigin.name} flag`}
-                            className="w-6 h-4 object-cover rounded-sm"
-                          />
-                        )}
-                        <select
-                          id="originAddress"
-                          name="origin_address"
-                          value={formData.origin_address}
-                          onChange={handleSelectChange}
-                          required
-                          className="w-full p-2 border rounded-md focus:border-orange-500 focus:outline-none"
-                        >
-                          <option value="" style={{ color: "gray" }}>
-                            Where is the shipment from?
-                          </option>
-                          {Countries.map((country) => (
-                            <option key={country.code} value={country.name}>
-                              {country.name}
+                  <div className="flex flex-col sm:flex-row gap-6">
+                    <div className="flex-1 space-y-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="originAddress">Origin Country</Label>
+                        <div className="flex items-center space-x-2">
+                          {selectedOrigin && (
+                            <img
+                              src={getFlagUrl(selectedOrigin.code)}
+                              alt={`${selectedOrigin.name} flag`}
+                              className="w-6 h-4 object-cover rounded-sm"
+                            />
+                          )}
+                          <select
+                            id="originAddress"
+                            name="origin_country"
+                            value={formData.origin_country}
+                            onChange={handleSelectChange}
+                            required
+                            className="w-full p-2 border rounded-md focus:border-orange-500 focus:outline-none"
+                          >
+                            <option value="" style={{ color: "gray" }}>
+                              Where is the shipment from?
                             </option>
-                          ))}
-                        </select>
+                            {Countries.map((country) => (
+                              <option key={country.code} value={country.name}>
+                                {country.name}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
                       </div>
-                    </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="destinationAddress">
-                        Destination Address/Country
-                      </Label>
-                      <div className="flex items-center space-x-2">
-                        {selectedDestination && (
-                          <img
-                            src={getFlagUrl(selectedDestination.code)}
-                            alt={`${selectedDestination.name} flag`}
-                            className="w-6 h-4 object-cover rounded-sm"
-                          />
-                        )}
-                        <select
-                          id="destinationAddress"
-                          name="destination_address"
-                          value={formData.destination_address}
-                          onChange={handleSelectChange}
-                          required
-                          className={`w-full p-2 border rounded-md focus:border-orange-500 focus:outline-none`}
-                        >
-                          <option value="">Where is the shipment going?</option>
-                          {Countries.map((country) => (
-                            <option key={country.code} value={country.name}>
-                              {country.name}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="city">City</Label>
-                      <div className="flex items-center space-x-2">
+                      <div className="space-y-2">
+                        <Label htmlFor="origin_city">Origin City</Label>
                         <Input
                           type="text"
-                          id="city"
-                          name="city"
-                          value={formData.city}
+                          id="origin_city"
+                          name="origin_city"
+                          value={formData.origin_city}
                           onChange={handleChange}
-                          placeholder="Enter your city"
+                          placeholder="Enter origin city"
                           required
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="origin_address">Origin Address</Label>
+                        <Input
+                          type="text"
+                          id="origin_address"
+                          name="origin_address"
+                          value={formData.origin_address}
+                          onChange={handleChange}
+                          placeholder="123 Main St, Springfield, IL 62704"
                         />
                       </div>
                     </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="address">Address</Label>
-                      <div className="flex items-center space-x-2">
+                    <div className="flex-1 space-y-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="destinationAddress">
+                          Destination Country
+                        </Label>
+                        <div className="flex items-center space-x-2">
+                          {selectedDestination && (
+                            <img
+                              src={getFlagUrl(selectedDestination.code)}
+                              alt={`${selectedDestination.name} flag`}
+                              className="w-6 h-4 object-cover rounded-sm"
+                            />
+                          )}
+                          <select
+                            id="destinationAddress"
+                            name="destination_country"
+                            value={formData.destination_country}
+                            onChange={handleSelectChange}
+                            required
+                            className="w-full p-2 border rounded-md focus:border-orange-500 focus:outline-none"
+                          >
+                            <option value="">
+                              Where is the shipment going?
+                            </option>
+                            {Countries.map((country) => (
+                              <option key={country.code} value={country.name}>
+                                {country.name}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="destination_city">
+                          Destination City
+                        </Label>
                         <Input
                           type="text"
-                          id="address"
-                          name="address"
-                          value={formData.address}
+                          id="destination_city"
+                          name="destination_city"
+                          value={formData.destination_city}
+                          onChange={handleChange}
+                          placeholder="Enter destination city"
+                          required
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="destination_address">
+                          Destination Address
+                        </Label>
+                        <Input
+                          type="text"
+                          id="destination_address"
+                          name="destination_address"
+                          value={formData.destination_address}
                           onChange={handleChange}
                           placeholder="123 Main St, Springfield, IL 62704"
                         />
