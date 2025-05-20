@@ -32,17 +32,16 @@ export function Header() {
           <ul className="flex items-center gap-6">
             {navLinks.map((link) => (
               <li key={link.path}>
-                <NavLink
-                  to={link.path}
-                  className={({ isActive }) =>
-                    cn(
-                      "font-display text-sm font-medium relative inline-block cursor-pointer transition-colors smooth-link",
-                      isActive && "text-orange-600 font-semibold"
-                    )
-                  }
+                <a
+                  href={link.path}
+                  className={cn(
+                    "font-display text-sm font-medium relative inline-block cursor-pointer transition-colors smooth-link",
+                    window.location.pathname === link.path &&
+                      "text-orange-600 font-semibold"
+                  )}
                 >
                   {link.name}
-                </NavLink>
+                </a>
               </li>
             ))}
           </ul>

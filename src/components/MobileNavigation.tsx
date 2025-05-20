@@ -89,14 +89,14 @@ export function MobileNavigation() {
 
               <nav className="flex flex-col w-full py-4 overflow-y-auto flex-1 backdrop-blur-md bg-white/80">
                 {navLinks.map((link) => (
-                  <Link
+                  <a
                     key={link.path}
-                    to={link.path}
+                    href={link.path}
                     onClick={() => setMobileMenuOpen(false)}
                     className="py-4 px-6 hover:bg-white/90 border-b border-gray-100/50 text-lg transition-colors"
                   >
                     {link.name}
-                  </Link>
+                  </a>
                 ))}
               </nav>
 
