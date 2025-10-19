@@ -34,7 +34,7 @@ export function Footer() {
             >
               <MessageSquare className="h-5 w-5" />
             </a>
-            <a
+{/*             <a
               href="https://twitter.com/BahtaExpress"
               target="_blank"
               rel="noreferrer"
@@ -42,9 +42,9 @@ export function Footer() {
               className="hover:text-orange-500 transition-colors"
             >
               <Twitter className="h-5 w-5" />
-            </a>
+            </a> */}
             <a
-              href="https://www.instagram.com/bahtaexpress/"
+              href="https://www.instagram.com/bahta_express?igsh=ZHlyN25qN3BidmJ1"
               target="_blank"
               rel="noreferrer"
               aria-label="Instagram"
@@ -53,7 +53,7 @@ export function Footer() {
               <Instagram className="h-5 w-5" />
             </a>
             <a
-              href="https://www.facebook.com/bahtaexpress"
+              href="https://www.facebook.com/share/1BmfLsDgHs/"
               target="_blank"
               rel="noreferrer"
               aria-label="Facebook"

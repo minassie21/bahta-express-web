@@ -400,7 +400,9 @@ export default function HomePage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-6">
             <FadeInWhenVisible>
-              <h2 className="text-3xl font- mb-8">What Our Clients Say</h2>
+                <h2 className="text-3xl font-display font-bold mb-12 text-center">
+               What Our Clients Say
+              </h2>
             </FadeInWhenVisible>
             <FadeInWhenVisible variants={fadeIn}>
               <div className="max-w-4xl mx-auto relative md:w-full sm:w-[90vw]">
