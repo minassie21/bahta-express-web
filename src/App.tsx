@@ -9,6 +9,7 @@ import QuotePage from "./pages/QuotePage";
 import { Toaster } from "sonner";
 import { HelmetProvider } from "react-helmet-async";
 import BlogDetailPage from "./pages/BlogDetailPage";
+import BackToTop from "./components/BackToTop";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/blog/detail/:postId" element={<BlogDetailPage />} />
           </Routes>
         </Layout>
+        <BackToTop />
         <Toaster position="top-right" />
       </BrowserRouter>
     </HelmetProvider>
